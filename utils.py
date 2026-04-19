@@ -28,8 +28,7 @@ EDITOR_TEMPLATE = (
     "Your earlier attempt:\n"
     "{r1}\n\n"
     "{feedback}\n\n"
-    "Revise your earlier attempt to fix the mistake. Keep correct reasoning "
-    "intact and only change what is wrong. Output the full revised solution:"
+    "Edit your earlier attempt to fix the mistake. Keep correct reasoning intact and only change what is wrong. Output the full edited solution:"
 )
 
 # ---------------------------------------------------------------------------
