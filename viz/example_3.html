@@ -1,0 +1,323 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Example 3</title>
+<style>
+body { font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+       max-width: 1100px; margin: 2em auto; padding: 0 1.5em; color: #222; }
+h1 { font-size: 1.4em; } h2 { margin-top: 1.8em; font-size: 1.1em; }
+pre.problem { white-space: pre-wrap; background: #f6f8fa; padding: 0.8em 1em;
+              border-radius: 6px; font-size: 14px; }
+table { border-collapse: collapse; margin: 0.5em 0 1.5em; font-size: 14px; }
+td, th { border: 1px solid #d0d7de; padding: 0.3em 0.7em; text-align: left; }
+th { background: #f6f8fa; }
+.good { background: #d4f7d4; } .bad { background: #fddede; }
+.diff { white-space: pre-wrap; font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 13px; line-height: 1.55; border: 1px solid #d0d7de;
+        padding: 1em; background: #fcfcfc; border-radius: 6px; }
+.equal       { color: #24292f; }
+.delete      { background: #ffe0e0; color: #82071e; text-decoration: line-through; }
+.insert      { background: #dcffe4; color: #0a6b27; }
+.replace-del { background: #ffe0e0; color: #82071e; text-decoration: line-through; }
+.replace-ins { background: #dcffe4; color: #0a6b27; }
+a { color: #0969da; text-decoration: none; } a:hover { text-decoration: underline; }
+</style></head>
+<body>
+<p><a href="index.html">&larr; index</a></p>
+<h1>Example 3
+ &middot; level 3
+ &middot; Number Theory</h1>
+
+<h2>Problem</h2>
+<pre class="problem">What is the smallest positive perfect cube that can be written as the sum of three consecutive integers?</pre>
+
+<h2>Answers</h2>
+<table>
+  <tr><th>Source</th><th>Boxed answer</th><th>Correct?</th></tr>
+  <tr><td>Gold</td><td>27</td><td>&ndash;</td></tr>
+  <tr><td>R1</td><td>[none]</td><td class="bad">wrong</td></tr>
+  <tr><td>R2_edit</td><td>27</td><td class="good">correct</td></tr>
+  <tr><td>R2_regen</td><td>27</td><td class="good">correct</td></tr>
+</table>
+
+<h2>R1 &rarr; R2_edit
+  <small>(overlap 0.209 &middot; len ratio 0.78)</small></h2>
+<div class="diff"><span class="equal">&lt;think&gt;
+Okay, </span><span class="replace-del">so</span><span class="replace-ins">let&#x27;s</span><span class="equal"> </span><span class="replace-del">I</span><span class="replace-ins">tackle</span><span class="equal"> </span><span class="replace-del">need</span><span class="replace-ins">this</span><span class="equal"> </span><span class="replace-del">to</span><span class="replace-ins">problem</span><span class="equal"> </span><span class="replace-del">find</span><span class="replace-ins">step by step. The question is asking for</span><span class="equal"> the smallest positive perfect cube that can be written as the sum of three consecutive integers.</span><span class="insert"> 
+
+First,</span><span class="equal"> </span><span class="replace-del">Hmm,</span><span class="replace-ins">I</span><span class="equal"> </span><span class="replace-del">let&#x27;s</span><span class="replace-ins">need</span><span class="equal"> </span><span class="replace-del">start</span><span class="replace-ins">to</span><span class="equal"> </span><span class="replace-del">by recalling</span><span class="replace-ins">recall</span><span class="equal"> what a perfect cube is. A perfect cube is a number </span><span class="replace-del">that&#x27;s</span><span class="replace-ins">that is</span><span class="equal"> the cube of an integer, like </span><span class="replace-del">1,</span><span class="replace-ins">1</span><span class="equal"> </span><span class="replace-del">8,</span><span class="replace-ins">(1³),</span><span class="equal"> </span><span class="replace-del">27,</span><span class="replace-ins">8</span><span class="equal"> </span><span class="replace-del">64,</span><span class="replace-ins">(2³),</span><span class="equal"> </span><span class="replace-del">etc.</span><span class="replace-ins">27</span><span class="equal"> </span><span class="replace-del">So</span><span class="replace-ins">(3³), 64 (4³), and so on. So,</span><span class="equal"> I need to find the smallest </span><span class="replace-del">one</span><span class="replace-ins">such</span><span class="equal"> </span><span class="replace-del">among these</span><span class="replace-ins">number</span><span class="equal"> that can also be expressed as the sum of three consecutive integers.
+
+</span><span class="replace-del">First,</span><span class="replace-ins">Next,</span><span class="equal"> </span><span class="replace-del">let</span><span class="replace-ins">I</span><span class="equal"> </span><span class="replace-del">me</span><span class="replace-ins">need</span><span class="equal"> </span><span class="replace-del">think</span><span class="replace-ins">to</span><span class="equal"> </span><span class="replace-del">about</span><span class="replace-ins">figure out</span><span class="equal"> how to represent three consecutive integers. Let&#x27;s say the three consecutive integers are n-1, n, and n+1. </span><span class="replace-del">Then</span><span class="replace-ins">Adding</span><span class="equal"> </span><span class="replace-del">their</span><span class="replace-ins">them</span><span class="equal"> </span><span class="replace-del">sum</span><span class="replace-ins">together</span><span class="equal"> </span><span class="replace-del">would be (n-1) + n + (n+1). Let me calculate that:</span><span class="replace-ins">gives:</span><span class="equal">
+
+(n - 1) + n + (n + 1) = </span><span class="delete">n - 1 + n + n + 1 = </span><span class="equal">3n.</span><span class="replace-del"> Oh, interesting! The sum simplifies to 3n. So</span><span class="replace-ins">
+
+So,</span><span class="equal"> the sum of</span><span class="insert"> any</span><span class="equal"> three consecutive integers is</span><span class="insert"> always</span><span class="equal"> three times the middle number. Therefore, any number that is a multiple of 3 can be expressed as the sum of three consecutive integers. </span><span class="replace-del">But wait,</span><span class="replace-ins">However,</span><span class="equal"> the </span><span class="replace-del">question</span><span class="replace-ins">problem</span><span class="equal"> </span><span class="replace-del">is</span><span class="replace-ins">specifies</span><span class="equal"> </span><span class="replace-del">asking</span><span class="replace-ins">that</span><span class="equal"> </span><span class="replace-del">for</span><span class="replace-ins">this number must also be</span><span class="equal"> a perfect </span><span class="replace-del">cube that is such a number.</span><span class="replace-ins">cube.</span><span class="equal"> Therefore, the perfect cube must be divisible by 3.
+
+</span><span class="replace-del">But</span><span class="replace-ins">Now,</span><span class="equal"> </span><span class="replace-del">hold</span><span class="replace-ins">let&#x27;s</span><span class="equal"> </span><span class="replace-del">on,</span><span class="replace-ins">consider</span><span class="equal"> </span><span class="replace-del">let</span><span class="replace-ins">the</span><span class="equal"> </span><span class="replace-del">me</span><span class="replace-ins">perfect cubes and</span><span class="equal"> check </span><span class="replace-del">if</span><span class="replace-ins">which</span><span class="equal"> </span><span class="replace-del">that&#x27;s</span><span class="replace-ins">ones</span><span class="equal"> </span><span class="replace-del">the case. For example, take 3n. If 3n is a perfect cube, then n must be a multiple of 3^(2), because 3n = cube. Let me think. Let&#x27;s suppose 3n = k^3. Then n = k^3 / 3. Since n has to be an integer, k^3 must be</span><span class="replace-ins">are</span><span class="equal"> divisible by 3. </span><span class="replace-del">Therefore,</span><span class="replace-ins">The</span><span class="equal"> </span><span class="replace-del">k</span><span class="replace-ins">cubes</span><span class="equal"> </span><span class="replace-del">must</span><span class="replace-ins">are:
+
+1³</span><span class="equal"> </span><span class="replace-del">be</span><span class="replace-ins">= 1 (not</span><span class="equal"> divisible by </span><span class="replace-del">3. Let me write k as 3m, where m is an integer. Then, substituting back, 3n</span><span class="replace-ins">3),
+2³</span><span class="equal"> = </span><span class="replace-del">(3m)^3</span><span class="replace-ins">8 (not divisible by 3),
+3³</span><span class="equal"> = </span><span class="replace-del">27m^3.</span><span class="replace-ins">27</span><span class="equal"> </span><span class="replace-del">Therefore,</span><span class="replace-ins">(divisible</span><span class="equal"> </span><span class="replace-del">n</span><span class="replace-ins">by 3),
+4³</span><span class="equal"> = </span><span class="replace-del">27m^3</span><span class="replace-ins">64</span><span class="equal"> </span><span class="replace-del">/</span><span class="replace-ins">(not</span><span class="equal"> </span><span class="replace-del">3</span><span class="replace-ins">divisible by 3),
+5³</span><span class="equal"> = </span><span class="replace-del">9m^3.</span><span class="replace-ins">125</span><span class="equal"> </span><span class="replace-del">So</span><span class="replace-ins">(not</span><span class="equal"> </span><span class="replace-del">n</span><span class="replace-ins">divisible</span><span class="equal"> </span><span class="replace-del">is</span><span class="replace-ins">by</span><span class="equal"> </span><span class="replace-del">9m^3.</span><span class="replace-ins">3),
+6³</span><span class="equal"> </span><span class="replace-del">Therefore,</span><span class="replace-ins">= 216 (divisible by 3), and so on.
+
+So,</span><span class="equal"> the </span><span class="replace-del">sum of three consecutive integers is 3n = 27m^3, which is a perfect cube. Therefore, the</span><span class="replace-ins">first</span><span class="equal"> perfect cube </span><span class="replace-del">is 27m^3. But 27m^3</span><span class="replace-ins">that</span><span class="equal"> is </span><span class="replace-del">also</span><span class="replace-ins">divisible</span><span class="equal"> </span><span class="replace-del">a</span><span class="replace-ins">by</span><span class="equal"> </span><span class="replace-del">cube, since 27</span><span class="replace-ins">3</span><span class="equal"> is </span><span class="replace-del">3^3,</span><span class="replace-ins">27.</span><span class="equal"> </span><span class="replace-del">so</span><span class="replace-ins">Now,</span><span class="equal"> </span><span class="replace-del">27m^3</span><span class="replace-ins">I</span><span class="equal"> </span><span class="replace-del">=</span><span class="replace-ins">need</span><span class="equal"> </span><span class="replace-del">(3m)^3.</span><span class="replace-ins">to</span><span class="equal"> </span><span class="replace-del">Therefore, the perfect cube is (3m)^3. Therefore, the smallest positive perfect cube would be when m=1, which is 3^3=27. Wait, but let me check</span><span class="replace-ins">verify</span><span class="equal"> if 27 can indeed be written as the sum of three consecutive integers.
+
+</span><span class="replace-del">So</span><span class="replace-ins">Using the formula from earlier,</span><span class="equal"> if </span><span class="replace-del">m=1,</span><span class="replace-ins">3n = 27,</span><span class="equal"> then </span><span class="replace-del">n=9*(1)^3=9.</span><span class="replace-ins">n = 9.</span><span class="equal"> Therefore, the three consecutive integers would be 8, 9, </span><span class="insert">and </span><span class="equal">10. </span><span class="replace-del">Their</span><span class="replace-ins">Adding</span><span class="equal"> </span><span class="replace-del">sum</span><span class="replace-ins">them together: 8 + 9 + 10 = 27. This checks out. 
+
+But wait, let me make sure there isn&#x27;t a smaller cube that I might have missed. The cubes before 27 are 1 and 8. As mentioned, 1</span><span class="equal"> is </span><span class="replace-del">8+9+10=27.</span><span class="replace-ins">not</span><span class="equal"> </span><span class="replace-del">Yes,</span><span class="replace-ins">divisible</span><span class="equal"> </span><span class="replace-del">that</span><span class="replace-ins">by</span><span class="equal"> </span><span class="replace-del">works.</span><span class="replace-ins">3,</span><span class="equal"> </span><span class="replace-del">So</span><span class="replace-ins">and 8 is also not divisible by 3. Therefore,</span><span class="equal"> 27 is </span><span class="replace-del">a</span><span class="replace-ins">indeed the smallest</span><span class="equal"> perfect cube </span><span class="replace-del">and</span><span class="replace-ins">that</span><span class="equal"> </span><span class="replace-del">it&#x27;s</span><span class="replace-ins">meets the criteria.
+
+However, just to be thorough, let&#x27;s consider if there&#x27;s another way to express a cube as</span><span class="equal"> the sum of three consecutive integers. </span><span class="replace-del">But</span><span class="replace-ins">For</span><span class="equal"> </span><span class="replace-del">wait,</span><span class="replace-ins">example, maybe starting from a different number or considering negative integers? Let&#x27;s test some examples.
+
+Take 3³ = 27. If we try to find three consecutive integers that sum to 27, we already found 8, 9, 10. What about other triplets? Let&#x27;s see:
+
+If we take 7, 8, 9: 7 + 8 + 9 = 24 (not 27).
+If we take 9, 10, 11: 9 + 10 + 11 = 30 (not 27).
+So, 8, 9, 10</span><span class="equal"> is </span><span class="replace-del">there</span><span class="replace-ins">the only triplet around that area. What about negative numbers?
+
+Take -1, 0, 1: sum is 0 (not</span><span class="equal"> a </span><span class="replace-del">smaller</span><span class="replace-ins">cube).
+Take -2, -1, 0: sum is -3 (not positive).
+Take 0, 1, 2: sum is 3 (not a cube).
+So, no luck there. 
+
+Another approach: Let&#x27;s think algebraically. Suppose the three consecutive integers are x, x+1, x+2. Their sum is 3x + 3 = 3(x + 1). For this to be a perfect cube, 3(x + 1) must be a cube. Let’s denote this cube as k³. Therefore:
+
+3(x + 1) = k³ ⇒ x + 1 = k³ / 3 ⇒ x = (k³ / 3) - 1.
+
+Since x must be an integer, k³ must be divisible by 3. Therefore, k must be a multiple of 3. Let’s let k = 3m, where m is a positive integer. Then:
+
+k³ = (3m)³ = 27m³ ⇒ x + 1 = 27m³ / 3 = 9m³ ⇒ x = 9m³ - 1.
+
+Therefore, the three consecutive integers would be 9m³ - 1, 9m³, and 9m³ + 1. Their sum is 3*(9m³) = 27m³, which is indeed a perfect cube. The smallest positive value occurs when m = 1, giving 27*1³ = 27. 
+
+This confirms that 27 is the smallest such cube. 
+
+Therefore, after checking all possibilities and verifying through multiple methods, the smallest positive</span><span class="equal"> perfect cube that can be written as the sum of three consecutive </span><span class="replace-del">integers?</span><span class="replace-ins">integers is 27.
+&lt;/think&gt;
+
+To solve the problem of finding the **smallest positive perfect cube** that can be written as the **sum of three consecutive integers**, we begin by analyzing the structure of such sums.
+
+---
+
+### Step 1: Representing the Sum of Three Consecutive Integers</span><span class="equal">
+
+Let </span><span class="replace-del">me</span><span class="replace-ins">the</span><span class="equal"> </span><span class="replace-del">check.</span><span class="replace-ins">three</span><span class="equal"> </span><span class="insert">consecutive integers be $ n-1, n, n+1 $. Their sum is:
+
+$$
+(n - 1) + n + (n + 1) = 3n
+$$
+
+Thus, **any number that is a multiple of 3** can be expressed as the sum of three consecutive integers. Therefore, the perfect cube we are looking for must be divisible by 3.
+
+---
+
+### Step 2: Identifying Perfect Cubes Divisible by 3
+
+</span><span class="equal">The</span><span class="insert"> first few</span><span class="equal"> perfect cubes </span><span class="replace-del">are</span><span class="replace-ins">are:
+
+$$
+1^3 =</span><span class="equal"> 1, </span><span class="insert">\quad 2^3 = </span><span class="equal">8,</span><span class="insert"> \quad 3^3 =</span><span class="equal"> 27, </span><span class="insert">\quad 4^3 = </span><span class="equal">64, </span><span class="replace-del">etc.</span><span class="replace-ins">\quad</span><span class="equal"> </span><span class="replace-del">Let&#x27;s</span><span class="replace-ins">5^3</span><span class="equal"> </span><span class="replace-del">check</span><span class="replace-ins">=</span><span class="equal"> </span><span class="replace-del">if</span><span class="replace-ins">125,</span><span class="equal"> </span><span class="replace-del">1</span><span class="replace-ins">\quad \ldots
+$$
+
+Among these, the first cube that is divisible by 3 is:
+
+$$
+27 = 3^3
+$$
+
+So, 27 is a candidate. Let’s verify that it can indeed be expressed as the sum of three consecutive integers.
+
+---
+
+### Step 3: Verifying the Sum of Three Consecutive Integers Equals 27
+
+From the earlier formula:
+
+$$
+\text{Sum} = 3n \Rightarrow 3n = 27 \Rightarrow n = 9
+$$
+
+So the three consecutive integers are $ 8, 9, 10 $, and their sum is:
+
+$$
+8 + 9 + 10 = 27
+$$
+
+This confirms that 27 is indeed a perfect cube and</span><span class="equal"> can be written as the sum of three consecutive integers.</span><span class="insert">
+
+---
+
+###</span><span class="equal"> </span><span class="replace-del">Let&#x27;s</span><span class="replace-ins">Step</span><span class="equal"> </span><span class="replace-del">try.</span><span class="replace-ins">4:</span><span class="equal"> </span><span class="replace-del">Let</span><span class="replace-ins">Confirming</span><span class="equal"> </span><span class="replace-del">me</span><span class="replace-ins">Minimality
+
+To</span><span class="equal"> </span><span class="replace-del">use</span><span class="replace-ins">ensure that 27 is</span><span class="equal"> the </span><span class="replace-del">formula</span><span class="replace-ins">**smallest**</span><span class="equal"> </span><span class="replace-del">3n</span><span class="replace-ins">such number, we check the previous perfect cubes:
+
+- $ 1^3</span><span class="equal"> = </span><span class="replace-del">1.</span><span class="replace-ins">1</span><span class="equal"> </span><span class="replace-del">Then</span><span class="replace-ins">$:</span><span class="equal"> </span><span class="replace-del">n=1/3,</span><span class="replace-ins">Not</span><span class="equal"> </span><span class="replace-del">which</span><span class="replace-ins">divisible by 3.
+- $ 2^3 = 8 $: Not divisible by 3.
+
+Thus, **27</span><span class="equal"> is </span><span class="replace-del">not</span><span class="replace-ins">the</span><span class="equal"> </span><span class="replace-del">an</span><span class="replace-ins">smallest</span><span class="equal"> </span><span class="replace-del">integer.</span><span class="replace-ins">perfect</span><span class="equal"> </span><span class="replace-del">Therefore,</span><span class="replace-ins">cube**</span><span class="equal"> </span><span class="replace-del">no. How about 8? 3n=8 implies n=8/3, which</span><span class="replace-ins">that</span><span class="equal"> is </span><span class="replace-del">not</span><span class="replace-ins">a</span><span class="equal"> </span><span class="replace-del">an</span><span class="replace-ins">multiple</span><span class="equal"> </span><span class="replace-del">integer.</span><span class="replace-ins">of</span><span class="equal"> </span><span class="replace-del">Therefore,</span><span class="replace-ins">3</span><span class="equal"> </span><span class="replace-del">no.</span><span class="replace-ins">and</span><span class="equal"> </span><span class="replace-del">So 8 cannot</span><span class="replace-ins">can</span><span class="equal"> be written as the sum of three consecutive integers.</span><span class="insert">
+
+---
+
+###</span><span class="equal"> </span><span class="replace-del">Then</span><span class="replace-ins">Final</span><span class="equal"> </span><span class="replace-del">27 is the next one, which works. Therefore, the answer is 27?</span><span class="replace-ins">Answer</span><span class="equal">
+
+</span><span class="replace-del">But wait, hold on. Let me think again. Because maybe there is another way to write the sum of three consecutive integers? Wait, the formula I used was for three consecutive integers centered around n. But maybe there&#x27;s another way? For example, maybe starting from a different number?
+
+Wait, no. The sum of any three consecutive integers can be expressed as 3n, where n is the middle number. Therefore, if the sum is 3n, then the sum must be a multiple of 3. Therefore, the perfect cube must be a multiple of 3. Therefore, the smallest perfect cube that is a multiple of 3 is 27. Therefore, 27 is the answer. Therefore, the answer is 27.
+
+But let me check if there&#x27;s a smaller cube that is a multiple of 3. The cubes are 1, 8, 27. 1 is not a multiple of 3. 8 is not. 27 is. Therefore, 27 is the first one. Therefore, the answer is 27. But let me check again with actual numbers. For example, can 27 be written as the sum of three consecutive integers? As I did before: 8 + 9 + 10 = 27. Yes. So that works.
+
+But let me think again if there&#x27;s another way. For example, maybe the three numbers are not centered around n, but maybe something else? Wait, no. The sum of three consecutive numbers is always 3 times the middle number. Therefore, regardless of how you pick them, their sum is 3n. Therefore, the sum must be a multiple of 3. Therefore, the perfect cube must be a multiple of 3, which is 27. Therefore, the answer is 27.
+
+But wait, hold on. Let me check for example, 3^3 = 27. But maybe there is a smaller cube that is a multiple of 3? Well, 3 is prime. The cubes are 1, 8, 27. 3^3 is 27. So no, there is no smaller cube that is a multiple of 3. Therefore, 27 is the answer. Therefore, the answer is 27. But let me check if there&#x27;s another cube that is a multiple of 3 but smaller than 27. For example, 3 itself is not a cube. 3 is prime. 3^1 is 3, but 3 is not a cube. 3^2 is 9, which is not a cube. 3^3 is 27. So yes, 27 is the first cube that is a multiple of 3. Therefore, 27 is the answer.
+
+But wait, another thought. Maybe the three consecutive integers are not necessarily positive? But the question says &quot;smallest positive perfect cube&quot;, so the cube has to be positive, but the integers could be negative? Wait, but if we allow negative integers, maybe there is a smaller cube? Let me check.
+
+For example, suppose we take three consecutive integers: -1, 0, 1. Their sum is 0. But 0 is not positive. If we take -2, -1, 0: sum is -3. Not positive. If we take -1, 0, 1: sum is 0. Not positive. If we take 0, 1, 2: sum is 3. Which is not a cube. If we take 1, 2, 3: sum is 6. Not a cube. 2,3,4: 9. Not a cube. 3,4,5: 12. Not a cube. 4,5,6: 15. Not a cube. 5,6,7: 18. Not a cube. 6,7,8: 21. Not a cube. 7,8,9: 24. Not a cube. 8,9,10: 27. Which is a cube. So that&#x27;s the same as before.
+
+Alternatively, maybe there is a different triplet of numbers, not in the middle? For example, maybe numbers that are not centered around n? Wait, but regardless of the numbers, the sum is 3n. So if you have three consecutive integers, say, a, a+1, a+2. Their sum is 3a + 3 = 3(a + 1). So that&#x27;s 3 times (a + 1). Therefore, the sum is 3 times some integer. Therefore, the sum must be divisible by 3. Therefore, the cube must be divisible by 3, so 27 is the first such cube. Therefore, 27 is the answer.
+
+But let me check if 27 is indeed the smallest. Let me think again. The cubes are 1, 8, 27. 1 is not divisible by 3. 8 is not. 27 is. Therefore, 27 is the answer. Therefore, the answer is 27.
+
+But wait, wait. Wait a second. Let me check if there is another way to write a cube as the sum of three consecutive integers. For example, maybe with negative numbers. Let me try. For example, suppose I have three consecutive integers: -4, -3, -2. Their sum is -9. Not positive. If I take -5, -4, -3: sum is -12. Not positive. How about -3, -2, -1: sum is -6. Still negative. How about 0, 1, 2: sum is 3. Not a cube. 1, 2, 3: 6. Not a cube. 2, 3, 4: 9. Not a cube. 3, 4, 5: 12</span><span class="replace-ins">$$
+\boxed{27}
+$$</span></div>
+
+<h2>R1 &rarr; R2_regen
+  <small>(overlap 0.393 &middot; len ratio 1.00)</small></h2>
+<div class="diff"><span class="equal">&lt;think&gt;
+Okay, so I need to find the smallest positive perfect cube that can be written as the sum of three consecutive integers. Hmm, </span><span class="replace-del">let&#x27;s</span><span class="replace-ins">let</span><span class="equal"> </span><span class="replace-del">start</span><span class="replace-ins">me</span><span class="equal"> </span><span class="replace-del">by</span><span class="replace-ins">think</span><span class="equal"> </span><span class="replace-del">recalling</span><span class="replace-ins">about how to approach this. 
+
+First, let me recall</span><span class="equal"> what a perfect cube is. A perfect cube is a number that&#x27;s the cube of an </span><span class="replace-del">integer,</span><span class="replace-ins">integer. So, numbers</span><span class="equal"> like </span><span class="replace-del">1,</span><span class="replace-ins">1</span><span class="equal"> </span><span class="replace-del">8,</span><span class="replace-ins">(1³),</span><span class="equal"> </span><span class="replace-del">27,</span><span class="replace-ins">8</span><span class="equal"> </span><span class="replace-del">64,</span><span class="replace-ins">(2³), 27 (3³), 64 (4³),</span><span class="equal"> etc. </span><span class="replace-del">So</span><span class="replace-ins">The</span><span class="equal"> </span><span class="replace-del">I</span><span class="replace-ins">question</span><span class="equal"> </span><span class="replace-del">need</span><span class="replace-ins">is</span><span class="equal"> </span><span class="replace-del">to</span><span class="replace-ins">asking</span><span class="equal"> </span><span class="replace-del">find</span><span class="replace-ins">for</span><span class="equal"> the smallest </span><span class="replace-del">one</span><span class="replace-ins">such</span><span class="equal"> </span><span class="replace-del">among these</span><span class="replace-ins">number</span><span class="equal"> that can also be expressed as the sum of three consecutive integers.
+
+</span><span class="replace-del">First,</span><span class="replace-ins">Alright,</span><span class="equal"> </span><span class="replace-del">let</span><span class="replace-ins">so I need to find three consecutive integers whose sum is a perfect cube, and find the smallest such cube. Let</span><span class="equal"> me </span><span class="replace-del">think</span><span class="replace-ins">start</span><span class="equal"> </span><span class="replace-del">about</span><span class="replace-ins">by figuring out</span><span class="equal"> how to </span><span class="replace-del">represent</span><span class="replace-ins">express the sum of three consecutive integers algebraically.
+
+Let me denote the</span><span class="equal"> three consecutive integers. Let&#x27;s say the </span><span class="insert">middle one is n. Then the </span><span class="equal">three </span><span class="replace-del">consecutive</span><span class="replace-ins">numbers</span><span class="equal"> </span><span class="replace-del">integers</span><span class="replace-ins">would</span><span class="equal"> </span><span class="replace-del">are</span><span class="replace-ins">be</span><span class="equal"> n-1, n, and n+1. </span><span class="replace-del">Then their</span><span class="replace-ins">Their</span><span class="equal"> sum would be (n-1) + n + (n+1). Let me </span><span class="replace-del">calculate</span><span class="replace-ins">compute</span><span class="equal"> that:
+
+(n - 1) + n + (n + 1) = n - 1 + n + n + 1 = 3n.</span><span class="replace-del"> Oh, interesting!</span><span class="replace-ins"> 
+
+Oh!</span><span class="equal"> The sum simplifies to 3n. </span><span class="replace-del">So</span><span class="replace-ins">So,</span><span class="equal"> the sum of three consecutive integers is three times the middle number. Therefore, </span><span class="replace-del">any</span><span class="replace-ins">if</span><span class="equal"> </span><span class="replace-del">number</span><span class="replace-ins">the</span><span class="equal"> </span><span class="replace-del">that</span><span class="replace-ins">sum</span><span class="equal"> is a </span><span class="replace-del">multiple</span><span class="replace-ins">perfect</span><span class="equal"> </span><span class="replace-del">of</span><span class="replace-ins">cube,</span><span class="equal"> </span><span class="replace-del">3</span><span class="replace-ins">then</span><span class="equal"> </span><span class="replace-del">can</span><span class="replace-ins">3n must</span><span class="equal"> be</span><span class="delete"> expressed as the sum of three consecutive integers. But wait, the question is asking for</span><span class="equal"> a perfect </span><span class="replace-del">cube</span><span class="replace-ins">cube. 
+
+Wait, so 3n is a perfect cube. Therefore, n must be such</span><span class="equal"> that </span><span class="insert">when multiplied by 3, the result </span><span class="equal">is</span><span class="delete"> such</span><span class="equal"> a </span><span class="replace-del">number.</span><span class="replace-ins">perfect</span><span class="equal"> </span><span class="replace-del">Therefore,</span><span class="replace-ins">cube. So, n = (perfect cube)/3. But n has to be an integer, so</span><span class="equal"> the perfect cube must be divisible by 3.</span><span class="replace-del">
+
+</span><span class="replace-ins"> 
+
+Therefore, the problem reduces to finding the smallest perfect cube that is divisible by 3, and then dividing it by 3 to get n. </span><span class="equal">But </span><span class="replace-del">hold on,</span><span class="replace-ins">wait,</span><span class="equal"> let me </span><span class="replace-del">check</span><span class="replace-ins">think</span><span class="equal"> </span><span class="replace-del">if</span><span class="replace-ins">again. 
+
+Alternatively,</span><span class="equal"> </span><span class="replace-del">that&#x27;s the case. For example, take 3n. If</span><span class="replace-ins">since</span><span class="equal"> 3n is a perfect cube, then n must be </span><span class="insert">3² times some cube? Wait, maybe I need to think about the prime factorization. 
+
+A perfect cube has exponents in its prime factorization that are multiples of 3. So, if 3n is a perfect cube, then in the prime factors of 3n, each prime&#x27;s exponent must be </span><span class="equal">a multiple of </span><span class="replace-del">3^(2), because 3n = cube. </span><span class="replace-ins">3. 
+
+</span><span class="equal">Let me think. </span><span class="replace-del">Let&#x27;s</span><span class="replace-ins">Let</span><span class="equal"> </span><span class="replace-del">suppose</span><span class="replace-ins">me denote that</span><span class="equal"> 3n = </span><span class="replace-del">k^3.</span><span class="replace-ins">k³,</span><span class="equal"> </span><span class="replace-del">Then</span><span class="replace-ins">where k is a positive integer. Therefore,</span><span class="equal"> n = </span><span class="replace-del">k^3</span><span class="replace-ins">k³</span><span class="equal"> / 3. Since n </span><span class="replace-del">has to</span><span class="replace-ins">must</span><span class="equal"> be an integer, </span><span class="replace-del">k^3</span><span class="replace-ins">k³</span><span class="equal"> must be divisible by 3. </span><span class="replace-del">Therefore,</span><span class="replace-ins">Which implies that</span><span class="equal"> k must be divisible by 3. Let me write k as 3m, where m is </span><span class="replace-del">an</span><span class="replace-ins">a positive</span><span class="equal"> integer.</span><span class="replace-del"> </span><span class="replace-ins"> 
+
+</span><span class="equal">Then, substituting back, 3n = </span><span class="replace-del">(3m)^3</span><span class="replace-ins">(3m)³</span><span class="equal"> = </span><span class="replace-del">27m^3.</span><span class="replace-ins">27m³.</span><span class="equal"> Therefore, n = </span><span class="replace-del">27m^3</span><span class="replace-ins">27m³</span><span class="equal"> / 3 = </span><span class="replace-del">9m^3. So</span><span class="replace-ins">9m³. 
+
+Therefore,</span><span class="equal"> n is </span><span class="replace-del">9m^3.</span><span class="replace-ins">9m³.</span><span class="equal"> Therefore, the sum of</span><span class="insert"> the</span><span class="equal"> three consecutive integers is 3n = </span><span class="replace-del">27m^3,</span><span class="replace-ins">27m³,</span><span class="equal"> which is a perfect cube. Therefore, the </span><span class="replace-del">perfect</span><span class="replace-ins">possible</span><span class="equal"> </span><span class="replace-del">cube</span><span class="replace-ins">values of the sum are 27m³, where m</span><span class="equal"> is </span><span class="delete">27m^3. But 27m^3 is also </span><span class="equal">a </span><span class="replace-del">cube,</span><span class="replace-ins">positive</span><span class="equal"> </span><span class="replace-del">since</span><span class="replace-ins">integer. 
+
+So the smallest such sum would be when m=1, which gives 27*1³ = 27. Therefore,</span><span class="equal"> 27 is</span><span class="delete"> 3^3, so 27m^3 = (3m)^3. Therefore, the perfect cube is (3m)^3. Therefore,</span><span class="equal"> the smallest positive perfect cube </span><span class="replace-del">would be when m=1, which is 3^3=27. Wait, but let me check if 27</span><span class="replace-ins">that</span><span class="equal"> can</span><span class="delete"> indeed</span><span class="equal"> be written as the sum of three consecutive integers.</span><span class="replace-del">
+
+So</span><span class="replace-ins"> 
+
+But let me check</span><span class="equal"> if </span><span class="replace-del">m=1,</span><span class="replace-ins">this</span><span class="equal"> </span><span class="replace-del">then</span><span class="replace-ins">is</span><span class="equal"> </span><span class="replace-del">n=9*(1)^3=9.</span><span class="replace-ins">correct. Let me verify with m=1. Then n = 9*(1)^3 = 9.</span><span class="equal"> Therefore, the three consecutive integers would be 8, 9, 10. Their sum is </span><span class="replace-del">8+9+10=27.</span><span class="replace-ins">8</span><span class="equal"> </span><span class="replace-del">Yes,</span><span class="replace-ins">+</span><span class="equal"> </span><span class="replace-del">that</span><span class="replace-ins">9</span><span class="equal"> </span><span class="replace-del">works.</span><span class="replace-ins">+</span><span class="equal"> </span><span class="replace-del">So</span><span class="replace-ins">10</span><span class="equal"> </span><span class="replace-del">27</span><span class="replace-ins">= 27, which</span><span class="equal"> is </span><span class="replace-del">a</span><span class="replace-ins">indeed</span><span class="equal"> </span><span class="replace-del">perfect cube and it&#x27;s the sum of three consecutive integers. </span><span class="replace-ins">3³. 
+
+</span><span class="equal">But wait, is there a smaller perfect cube that can be written as the sum of three consecutive integers?</span><span class="replace-del">
+
+</span><span class="replace-ins"> </span><span class="equal">Let me check. The perfect cubes are 1, 8, 27, 64, etc. </span><span class="replace-del">Let&#x27;s</span><span class="replace-ins">Let me</span><span class="equal"> check if 1</span><span class="insert"> or 8</span><span class="equal"> can be written as the sum of three consecutive integers.</span><span class="insert"> 
+
+For 1:</span><span class="equal"> Let&#x27;s </span><span class="replace-del">try.</span><span class="replace-ins">see.</span><span class="equal"> </span><span class="replace-del">Let me use the formula</span><span class="replace-ins">If</span><span class="equal"> 3n = </span><span class="replace-del">1.</span><span class="replace-ins">1,</span><span class="equal"> </span><span class="replace-del">Then</span><span class="replace-ins">then</span><span class="equal"> </span><span class="replace-del">n=1/3,</span><span class="replace-ins">n = 1/3,</span><span class="equal"> which is not an integer. Therefore, no.</span><span class="insert"> 
+
+For</span><span class="equal"> </span><span class="replace-del">How</span><span class="replace-ins">8:</span><span class="equal"> </span><span class="replace-del">about</span><span class="replace-ins">3n</span><span class="equal"> </span><span class="replace-del">8?</span><span class="replace-ins">=</span><span class="equal"> </span><span class="replace-del">3n=8</span><span class="replace-ins">8</span><span class="equal"> </span><span class="replace-del">implies</span><span class="replace-ins">=&gt;</span><span class="equal"> </span><span class="replace-del">n=8/3,</span><span class="replace-ins">n = 8/3,</span><span class="equal"> which is not an integer. Therefore, no.</span><span class="replace-del"> </span><span class="replace-ins"> 
+
+</span><span class="equal">So</span><span class="delete"> 8 cannot be written as the sum of three consecutive integers. Then</span><span class="equal"> 27 is the next one, which works. Therefore, </span><span class="replace-del">the answer</span><span class="replace-ins">27</span><span class="equal"> is </span><span class="replace-del">27?
+
+</span><span class="replace-ins">the answer. 
+
+</span><span class="equal">But wait, </span><span class="delete">hold on. Let me think again. Because </span><span class="equal">maybe </span><span class="replace-del">there is</span><span class="replace-ins">there&#x27;s</span><span class="equal"> another way to write</span><span class="insert"> a perfect cube as</span><span class="equal"> the sum of three consecutive integers? </span><span class="replace-del">Wait,</span><span class="replace-ins">Let me think. 
+
+Alternatively, maybe</span><span class="equal"> the</span><span class="delete"> formula I used was for</span><span class="equal"> three consecutive integers </span><span class="insert">don&#x27;t have to be </span><span class="equal">centered around </span><span class="replace-del">n.</span><span class="replace-ins">n?</span><span class="equal"> </span><span class="delete">But maybe there&#x27;s another way? For example, maybe starting from a different number?
+
+</span><span class="equal">Wait, </span><span class="replace-del">no.</span><span class="replace-ins">but</span><span class="equal"> </span><span class="replace-del">The</span><span class="replace-ins">the</span><span class="equal"> sum of</span><span class="delete"> any</span><span class="equal"> three consecutive integers </span><span class="replace-del">can</span><span class="replace-ins">is</span><span class="equal"> </span><span class="replace-del">be expressed as</span><span class="replace-ins">always</span><span class="equal"> 3n, where n is the middle number. </span><span class="delete">Therefore, if the sum is 3n, then the sum must be a multiple of 3. Therefore, the perfect cube must be a multiple of 3. Therefore, the smallest perfect cube that is a multiple of 3 is 27. Therefore, 27 is the answer. Therefore, the answer is 27.
+
+But let me check if there&#x27;s a smaller cube that is a multiple of 3. The cubes are 1, 8, 27. 1 is not a multiple of 3. 8 is not. 27 is. Therefore, 27 is the first one. Therefore, the answer is 27. But let me check again with actual numbers. For example, can 27 be written as the sum of three consecutive integers? As I did before: 8 + 9 + 10 = 27. Yes. </span><span class="equal">So</span><span class="delete"> that works.
+
+But let me think again if there&#x27;s another way. For example, maybe the three numbers are not centered around n, but maybe something else? Wait, no. The sum of three consecutive numbers is always 3 times the middle number. Therefore,</span><span class="equal"> regardless of how you </span><span class="replace-del">pick</span><span class="replace-ins">choose</span><span class="equal"> them, their sum is </span><span class="replace-del">3n.</span><span class="replace-ins">three</span><span class="equal"> </span><span class="replace-del">Therefore,</span><span class="replace-ins">times</span><span class="equal"> the </span><span class="replace-del">sum</span><span class="replace-ins">middle</span><span class="equal"> </span><span class="replace-del">must be a multiple of 3. Therefore, the perfect cube must be a multiple of 3, which is 27. Therefore, the answer is 27.
+
+But wait, hold on. Let me check for example, 3^3 = 27. But maybe there is a smaller cube that is a multiple of 3? Well, 3 is prime. The cubes are 1, 8, 27. 3^3 is 27. So no, there is no smaller cube that is a multiple of 3. Therefore, 27 is the answer. Therefore, the answer is 27. But let me check if there&#x27;s another cube that is a multiple of 3 but smaller than 27. For example, 3 itself is not a cube. 3 is prime. 3^1 is 3, but 3 is not a cube. 3^2 is 9, which is not a cube. 3^3 is 27. So yes, 27 is the first cube that is a multiple of 3. Therefore, 27 is the answer.
+
+But wait, another thought. Maybe the three consecutive integers are not necessarily positive? But the question says &quot;smallest positive perfect cube&quot;, so the cube has to be positive, but the integers could be negative? Wait, but if we allow negative integers, maybe there is a smaller cube? Let me check.
+
+For example, suppose we take three consecutive integers: -1, 0, 1. Their sum is 0. But 0 is not positive. If we take -2, -1, 0: sum is -3. Not positive. If we take -1, 0, 1: sum is 0. Not positive. If we take 0, 1, 2: sum is 3. Which is not a cube. If we take 1, 2, 3: sum is 6. Not a cube. 2,3,4: 9. Not a cube. 3,4,5: 12. Not a cube. 4,5,6: 15. Not a cube. 5,6,7: 18. Not a cube. 6,7,8: 21. Not a cube. 7,8,9: 24. Not a cube. 8,9,10: 27. Which is a cube. So that&#x27;s the same as before.
+
+Alternatively, maybe there is a different triplet of numbers, not in the middle? For example, maybe numbers that are not centered around n? Wait, but regardless of the numbers, the sum is 3n. So if you have three consecutive integers, say, a, a+1, a+2. Their sum is 3a + 3 = 3(a + 1). So that&#x27;s 3 times (a + 1). Therefore, the sum is 3 times some integer.</span><span class="replace-ins">number.</span><span class="equal"> Therefore, the sum must be divisible by 3. Therefore, the </span><span class="insert">perfect </span><span class="equal">cube must be divisible by 3, so </span><span class="replace-del">27</span><span class="replace-ins">the cube must be a multiple of 3. 
+
+So the smallest perfect cube divisible by 3</span><span class="equal"> is </span><span class="insert">3³=27. Therefore, that&#x27;s </span><span class="equal">the </span><span class="replace-del">first</span><span class="replace-ins">answer. 
+
+But</span><span class="equal"> </span><span class="replace-del">such</span><span class="replace-ins">let me check another way. Let me think about the sum of three consecutive integers. Suppose the three integers are x, x+1, x+2. Then their sum is 3x + 3 = 3(x + 1). Therefore, the sum is 3 times (x + 1). Therefore, same as before. 
+
+Therefore, 3(x + 1) must be a perfect</span><span class="equal"> cube. Therefore,</span><span class="insert"> x + 1 must be a perfect cube divided by 3. Therefore, similar reasoning. 
+
+So, if 3(x + 1) = k³, then x + 1 = k³ / 3. Therefore, k must be a multiple of 3. Let k = 3m. Then x + 1 = (27m³)/3 = 9m³. Therefore, x = 9m³ - 1. Therefore, the three numbers would be 9m³ - 1, 9m³, 9m³ + 1. Their sum is 3*(9m³) = 27m³, which is a perfect cube. 
+
+Therefore, the smallest m is 1, which gives 27*1 = 27. Therefore, the answer is 27. 
+
+So, seems like</span><span class="equal"> 27 is the answer.</span><span class="replace-del">
+
+</span><span class="replace-ins"> 
+
+</span><span class="equal">But let me check if </span><span class="replace-del">27 is indeed the smallest. Let me think again. The cubes are 1, 8, 27. 1 is not divisible by 3. 8 is not. 27 is. Therefore, 27 is the answer. Therefore, the answer is 27.
+
+But wait, wait. Wait</span><span class="replace-ins">there&#x27;s</span><span class="equal"> a </span><span class="replace-del">second. Let me check if there is another way to write a</span><span class="replace-ins">smaller</span><span class="equal"> cube</span><span class="insert"> that can be expressed</span><span class="equal"> as the sum of three consecutive integers. For example, </span><span class="replace-del">maybe with negative numbers.</span><span class="replace-ins">8.</span><span class="equal"> Let me </span><span class="replace-del">try.</span><span class="replace-ins">try to find three consecutive integers that add up to 8. Let me suppose they are x, x+1, x+2. Then 3x + 3 = 8 =&gt; 3x = 5 =&gt; x = 5/3. Not integer. 
+
+How about 1? 3x + 3 = 1 =&gt; 3x = -2 =&gt; x = -2/3. Not integer. 
+
+What about 0? Well, 0 isn&#x27;t positive. The problem says positive perfect cube. 
+
+So 27 is the first one. 
+
+Alternatively, maybe there&#x27;s another way to write the sum?</span><span class="equal"> For example, </span><span class="replace-del">suppose</span><span class="replace-ins">maybe</span><span class="equal"> </span><span class="replace-del">I</span><span class="replace-ins">the three numbers are not in the form x, x+1, x+2? But they</span><span class="equal"> have </span><span class="replace-del">three</span><span class="replace-ins">to be</span><span class="equal"> consecutive </span><span class="replace-del">integers:</span><span class="replace-ins">integers,</span><span class="equal"> </span><span class="replace-del">-4,</span><span class="replace-ins">so</span><span class="equal"> </span><span class="replace-del">-3,</span><span class="replace-ins">that&#x27;s</span><span class="equal"> </span><span class="replace-del">-2.</span><span class="replace-ins">the only way. 
+
+Alternatively, maybe negative integers? But the problem says positive perfect cube, so even if the integers are negative, their sum is positive. But the cube is positive. However, the question is about the cube being positive, so the sum has to be positive. 
+
+But even if we consider negative integers, let&#x27;s see. For example, if the three numbers are -1, 0, 1.</span><span class="equal"> Their sum is </span><span class="replace-del">-9.</span><span class="replace-ins">0, which isn&#x27;t a positive cube. 
+
+Or -2, -1, 0: sum is -3.</span><span class="equal"> Not positive.</span><span class="insert"> 
+
+Alternatively,</span><span class="equal"> </span><span class="replace-del">If</span><span class="replace-ins">maybe three positive integers. So the sum is positive. 
+
+So, I think 27 is correct. 
+
+But let me check for m=1, the three numbers are 8, 9, 10. Sum is 27. 
+
+Alternatively, maybe there is another set of three consecutive integers that add up to 27? For example, if</span><span class="equal"> I take </span><span class="replace-del">-5,</span><span class="replace-ins">numbers</span><span class="equal"> </span><span class="replace-del">-4,</span><span class="replace-ins">around</span><span class="equal"> </span><span class="replace-del">-3:</span><span class="replace-ins">9. But that&#x27;s the same as above. 
+
+Alternatively, maybe numbers like 7, 8, 12? Wait, no, they are not consecutive. 
+
+So, seems like 27 is the answer. 
+
+Therefore, the answer is 27. 
+
+**Final Answer**
+The smallest positive perfect cube that can be written as the</span><span class="equal"> sum </span><span class="insert">of three consecutive integers </span><span class="equal">is </span><span class="replace-del">-12.</span><span class="replace-ins">\boxed{27}.
+&lt;/think&gt;
+
+To</span><span class="equal"> </span><span class="replace-del">Not</span><span class="replace-ins">solve</span><span class="equal"> </span><span class="replace-del">positive.</span><span class="replace-ins">the</span><span class="equal"> </span><span class="replace-del">How</span><span class="replace-ins">problem</span><span class="equal"> </span><span class="replace-del">about</span><span class="replace-ins">of</span><span class="equal"> </span><span class="replace-del">-3,</span><span class="replace-ins">finding</span><span class="equal"> </span><span class="replace-del">-2,</span><span class="replace-ins">the</span><span class="equal"> </span><span class="replace-del">-1:</span><span class="replace-ins">**smallest positive perfect cube** that can be written as the **sum of three consecutive integers**, we begin by analyzing the structure of such a sum.
+
+---
+
+### Step 1: Express the Sum of Three Consecutive Integers
+
+Let the three consecutive integers be $ x $, $ x+1 $, and $ x+2 $. Their</span><span class="equal"> sum </span><span class="insert">is:
+
+$$
+x + (x+1) + (x+2) = 3x + 3 = 3(x + 1)
+$$
+
+So, the **sum of three consecutive integers** </span><span class="equal">is </span><span class="replace-del">-6.</span><span class="replace-ins">always</span><span class="equal"> </span><span class="replace-del">Still</span><span class="replace-ins">three</span><span class="equal"> </span><span class="replace-del">negative.</span><span class="replace-ins">times</span><span class="equal"> </span><span class="replace-del">How</span><span class="replace-ins">some</span><span class="equal"> </span><span class="replace-del">about</span><span class="replace-ins">integer,</span><span class="equal"> </span><span class="replace-del">0,</span><span class="replace-ins">i.e.,</span><span class="equal"> </span><span class="replace-del">1,</span><span class="replace-ins">$ 3n $, where $ n = x + 1 $.
+
+---
+
+### Step</span><span class="equal"> 2: </span><span class="replace-del">sum</span><span class="replace-ins">Understand the Problem in Terms of Perfect Cubes
+
+We are looking for the **smallest positive perfect cube** that can be written in the form $ 3n $, where $ n $</span><span class="equal"> is </span><span class="replace-del">3.</span><span class="replace-ins">an</span><span class="equal"> </span><span class="replace-del">Not</span><span class="replace-ins">integer.
+
+That</span><span class="equal"> </span><span class="replace-del">a</span><span class="replace-ins">is,</span><span class="equal"> </span><span class="replace-del">cube.</span><span class="replace-ins">we</span><span class="equal"> </span><span class="replace-del">1,</span><span class="replace-ins">want</span><span class="equal"> </span><span class="replace-del">2,</span><span class="replace-ins">the</span><span class="equal"> </span><span class="replace-del">3:</span><span class="replace-ins">**smallest</span><span class="equal"> </span><span class="replace-del">6.</span><span class="replace-ins">perfect</span><span class="equal"> </span><span class="replace-del">Not</span><span class="replace-ins">cube**</span><span class="equal"> </span><span class="replace-del">a</span><span class="replace-ins">$</span><span class="equal"> </span><span class="replace-del">cube. 2, 3, 4: 9. Not a cube. 3, 4, 5: 12</span><span class="replace-ins">k^</span></div>
+
+</body></html>

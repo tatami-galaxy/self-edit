@@ -1,0 +1,47 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Edit viz</title>
+<style>
+body { font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+       max-width: 1100px; margin: 2em auto; padding: 0 1.5em; color: #222; }
+h1 { font-size: 1.4em; } h2 { margin-top: 1.8em; font-size: 1.1em; }
+pre.problem { white-space: pre-wrap; background: #f6f8fa; padding: 0.8em 1em;
+              border-radius: 6px; font-size: 14px; }
+table { border-collapse: collapse; margin: 0.5em 0 1.5em; font-size: 14px; }
+td, th { border: 1px solid #d0d7de; padding: 0.3em 0.7em; text-align: left; }
+th { background: #f6f8fa; }
+.good { background: #d4f7d4; } .bad { background: #fddede; }
+.diff { white-space: pre-wrap; font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 13px; line-height: 1.55; border: 1px solid #d0d7de;
+        padding: 1em; background: #fcfcfc; border-radius: 6px; }
+.equal       { color: #24292f; }
+.delete      { background: #ffe0e0; color: #82071e; text-decoration: line-through; }
+.insert      { background: #dcffe4; color: #0a6b27; }
+.replace-del { background: #ffe0e0; color: #82071e; text-decoration: line-through; }
+.replace-ins { background: #dcffe4; color: #0a6b27; }
+a { color: #0969da; text-decoration: none; } a:hover { text-decoration: underline; }
+</style></head>
+<body>
+<h1>Edit visualization</h1>
+
+<h2>Config</h2>
+<table><tr><td>model</td><td>Qwen/Qwen3-4B</td></tr><tr><td>dataset</td><td>math500</td></tr><tr><td>levels</td><td>None</td></tr><tr><td>max_samples</td><td>None</td></tr><tr><td>feedback_mode</td><td>minimal</td></tr><tr><td>temperature</td><td>0.7</td></tr><tr><td>top_p</td><td>0.95</td></tr><tr><td>max_tokens</td><td>2048</td></tr><tr><td>seed</td><td>42</td></tr></table>
+
+<h2>Summary</h2>
+<table><tr><td>stage1_total</td><td>500</td></tr><tr><td>stage1_failures</td><td>303</td></tr><tr><td>stage1_failure_rate</td><td>0.6060</td></tr><tr><td>r2_regen_correct</td><td>0.2706</td></tr><tr><td>r2_edit_correct</td><td>0.5182</td></tr><tr><td>len_ratio_regen</td><td>0.9729</td></tr><tr><td>len_ratio_edit</td><td>0.8006</td></tr><tr><td>overlap_regen</td><td>0.3159</td></tr><tr><td>overlap_edit</td><td>0.2753</td></tr></table>
+
+<h2>Aggregate edit density</h2>
+<p>Fraction of R1 tokens modified in R2, averaged across examples, binned by
+normalized position in R1. Higher = more editing at that region.</p>
+<p><img src="edit_density.png" style="max-width: 900px;"></p>
+
+<h2>Examples (10)</h2>
+<table>
+<tr>
+  <th>#</th><th>subject</th><th>lvl</th>
+  <th>edit?</th><th>regen?</th>
+  <th>overlap_edit</th><th>overlap_regen</th>
+  <th>lr_edit</th><th>lr_regen</th>
+</tr>
+<tr><td><a href="example_0.html">0</a></td><td>Precalculus</td><td>2</td><td class="bad">wrong</td><td class="bad">wrong</td><td>0.362</td><td>0.315</td><td>0.32</td><td>1.17</td></tr><tr><td><a href="example_1.html">1</a></td><td>Intermediate Algebra</td><td>5</td><td class="good">correct</td><td class="bad">wrong</td><td>0.405</td><td>0.266</td><td>0.61</td><td>1.00</td></tr><tr><td><a href="example_2.html">2</a></td><td>Algebra</td><td>2</td><td class="good">correct</td><td class="bad">wrong</td><td>0.152</td><td>0.388</td><td>0.48</td><td>1.00</td></tr><tr><td><a href="example_3.html">3</a></td><td>Number Theory</td><td>3</td><td class="good">correct</td><td class="good">correct</td><td>0.209</td><td>0.393</td><td>0.78</td><td>1.00</td></tr><tr><td><a href="example_4.html">4</a></td><td>Prealgebra</td><td>5</td><td class="bad">wrong</td><td class="bad">wrong</td><td>0.104</td><td>0.321</td><td>1.00</td><td>1.00</td></tr><tr><td><a href="example_5.html">5</a></td><td>Number Theory</td><td>3</td><td class="good">correct</td><td class="bad">wrong</td><td>0.285</td><td>0.289</td><td>1.00</td><td>1.00</td></tr><tr><td><a href="example_6.html">6</a></td><td>Intermediate Algebra</td><td>5</td><td class="bad">wrong</td><td class="bad">wrong</td><td>0.193</td><td>0.272</td><td>1.00</td><td>1.00</td></tr><tr><td><a href="example_7.html">7</a></td><td>Number Theory</td><td>5</td><td class="good">correct</td><td class="good">correct</td><td>0.248</td><td>0.358</td><td>0.75</td><td>1.00</td></tr><tr><td><a href="example_8.html">8</a></td><td>Precalculus</td><td>5</td><td class="good">correct</td><td class="bad">wrong</td><td>0.187</td><td>0.279</td><td>1.00</td><td>1.00</td></tr><tr><td><a href="example_9.html">9</a></td><td>Precalculus</td><td>4</td><td class="good">correct</td><td class="good">correct</td><td>0.240</td><td>0.211</td><td>0.70</td><td>0.99</td></tr>
+</table>
+</body></html>
