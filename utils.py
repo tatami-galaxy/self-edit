@@ -18,17 +18,17 @@ SYSTEM_PROMPT = (
 
 TEACHER_TEMPLATE = (
     "{question}\n\n"
-    "The following is feedback from your unsuccessful earlier attempt:\n"
+    "The following is feedback from your unsuccessful earlier attempt to the question:\n"
     "{feedback}\n\n"
     "Now correctly solve the original question:"
 )
 
 EDITOR_TEMPLATE = (
     "{question}\n\n"
-    "Your earlier attempt:\n"
+    "The following is an attempted solution to the question:\n"
     "{r1}\n\n"
     "{feedback}\n\n"
-    "Edit your earlier attempt to fix the mistake. Keep correct reasoning intact and only change what is wrong. Output the full edited solution:"
+    "Revise the solution to fix the mistake. Keep correct thinking and reasoning intact and only change what is wrong. Output the full revised solution:"
 )
 
 # ---------------------------------------------------------------------------
