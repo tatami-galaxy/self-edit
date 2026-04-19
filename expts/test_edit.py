@@ -48,7 +48,7 @@ def build_regen_feedback(mode: str, r1: str, wrong: str, gold: str) -> str:
 def build_edit_feedback(wrong: str, gold: str) -> str:
     # Editor prompt already shows R1 structurally, so feedback stays minimal.
     wrong_str = wrong if wrong else "[no boxed answer]"
-    return f"Your final answer was {wrong_str}, but the correct answer is {gold}."
+    return f"The given final answer is {wrong_str}, but the correct answer is {gold}."
 
 
 def stage1_r1(llm: LLM, sampling: SamplingParams, problems: list[dict]) -> list[dict]:

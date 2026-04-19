@@ -28,7 +28,7 @@ EDITOR_TEMPLATE = (
     "The following is an attempted solution to the question:\n"
     "{r1}\n\n"
     "{feedback}\n\n"
-    "Revise the solution to fix the mistake. Keep correct thinking and reasoning intact and only change what is wrong. Output the full revised solution:"
+    "Revise the solution to fix the mistake. Keep correct reasoning intact and only change what is wrong. Output the full revised solution:"
 )
 
 # ---------------------------------------------------------------------------
