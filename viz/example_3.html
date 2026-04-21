@@ -1,0 +1,651 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Example 3</title>
+<style>
+body { font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+       max-width: 1100px; margin: 2em auto; padding: 0 1.5em; color: #222; }
+h1 { font-size: 1.4em; } h2 { margin-top: 1.8em; font-size: 1.1em; }
+pre.problem { white-space: pre-wrap; background: #f6f8fa; padding: 0.8em 1em;
+              border-radius: 6px; font-size: 14px; }
+table { border-collapse: collapse; margin: 0.5em 0 1.5em; font-size: 14px; }
+td, th { border: 1px solid #d0d7de; padding: 0.3em 0.7em; text-align: left; }
+th { background: #f6f8fa; }
+.good { background: #d4f7d4; } .bad { background: #fddede; }
+.diff { white-space: pre-wrap; font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 13px; line-height: 1.55; border: 1px solid #d0d7de;
+        padding: 1em; background: #fcfcfc; border-radius: 6px; }
+.equal       { color: #24292f; }
+.delete      { background: #ffe0e0; color: #82071e; text-decoration: line-through; }
+.insert      { background: #dcffe4; color: #0a6b27; }
+.replace-del { background: #ffe0e0; color: #82071e; text-decoration: line-through; }
+.replace-ins { background: #dcffe4; color: #0a6b27; }
+a { color: #0969da; text-decoration: none; } a:hover { text-decoration: underline; }
+</style></head>
+<body>
+<p><a href="index.html">&larr; index</a></p>
+<h1>Example 3
+ &middot; level 3
+ &middot; Number Theory</h1>
+
+<h2>Problem</h2>
+<pre class="problem">What is the least positive integer multiple of 30 that can be written with only the digits 0 and 2?</pre>
+
+<h2>Answers</h2>
+<table>
+  <tr><th>Source</th><th>Boxed answer</th><th>Correct?</th></tr>
+  <tr><td>Gold</td><td>2220</td><td>&ndash;</td></tr>
+  <tr><td>R1</td><td>[none]</td><td class="bad">wrong</td></tr>
+  <tr><td>R2_edit</td><td>2220</td><td class="good">correct</td></tr>
+  <tr><td>R2_regen</td><td>2220</td><td class="good">correct</td></tr>
+</table>
+
+<h2>R1 &rarr; R2_edit
+  <small>(overlap 0.257 &middot; len ratio 0.54)</small></h2>
+<div class="diff"><span class="equal">&lt;think&gt;
+Okay, so I need to find the smallest positive integer multiple of 30 that only has digits 0 and 2. Let me think </span><span class="replace-del">about</span><span class="replace-ins">through</span><span class="equal"> </span><span class="replace-del">how</span><span class="replace-ins">this step by step.
+
+First, since the number has</span><span class="equal"> to </span><span class="replace-del">approach</span><span class="replace-ins">be</span><span class="equal"> </span><span class="replace-del">this. 
+
+First, let me recall that 30 factors into 2, 3, and 5. So, any</span><span class="replace-ins">a</span><span class="equal"> multiple of </span><span class="replace-del">30</span><span class="replace-ins">30, it</span><span class="equal"> must be divisible by 2, 3, and 5. </span><span class="replace-del">Let me</span><span class="replace-ins">Let&#x27;s</span><span class="equal"> break down </span><span class="replace-del">the</span><span class="replace-ins">each</span><span class="equal"> </span><span class="replace-del">requirements:</span><span class="replace-ins">condition:</span><span class="equal">
+
+1. </span><span class="replace-del">Divisible</span><span class="replace-ins">**Divisible</span><span class="equal"> by </span><span class="replace-del">2:</span><span class="replace-ins">2**:</span><span class="equal"> The number must end with an even digit. Since we can only use 0 and 2, the last digit has to be 0 or 2. </span><span class="replace-del">But</span><span class="replace-ins">However,</span><span class="equal"> </span><span class="replace-del">since</span><span class="replace-ins">for</span><span class="equal"> </span><span class="replace-del">it&#x27;s divisible</span><span class="replace-ins">divisibility</span><span class="equal"> by </span><span class="replace-del">5 as well,</span><span class="replace-ins">5,</span><span class="equal"> the number must end with </span><span class="delete">0. Because 5 divides a number only if it ends with </span><span class="equal">0 or 5. </span><span class="replace-del">But</span><span class="replace-ins">Since</span><span class="equal"> </span><span class="replace-del">since</span><span class="replace-ins">5</span><span class="equal"> </span><span class="replace-del">we</span><span class="replace-ins">isn&#x27;t</span><span class="equal"> </span><span class="replace-del">can&#x27;t</span><span class="replace-ins">allowed,</span><span class="equal"> </span><span class="replace-del">use</span><span class="replace-ins">the</span><span class="equal"> </span><span class="replace-del">5,</span><span class="replace-ins">number</span><span class="equal"> </span><span class="replace-del">it has to</span><span class="replace-ins">must</span><span class="equal"> end with 0. So, the number must end with 0.</span><span class="insert">
+
+2.</span><span class="equal"> </span><span class="replace-del">Therefore,</span><span class="replace-ins">**Divisible</span><span class="equal"> </span><span class="replace-del">the</span><span class="replace-ins">by</span><span class="equal"> </span><span class="replace-del">last</span><span class="replace-ins">5**:</span><span class="equal"> </span><span class="replace-del">digit</span><span class="replace-ins">As</span><span class="equal"> </span><span class="replace-del">is 0. So,</span><span class="replace-ins">above,</span><span class="equal"> the number must end with 0. </span><span class="delete">That simplifies things a bit. </span><span class="equal">So, </span><span class="replace-del">any</span><span class="replace-ins">that&#x27;s</span><span class="equal"> </span><span class="replace-del">candidate</span><span class="replace-ins">already</span><span class="equal"> </span><span class="replace-del">number must end with 0.
+
+2. Divisible</span><span class="replace-ins">covered</span><span class="equal"> by </span><span class="replace-del">3:</span><span class="replace-ins">the divisibility by 2 and 5.
+
+3. **Divisible by 3**:</span><span class="equal"> The sum of the digits must be a multiple of 3. Since the digits can only be 0 and 2, the sum </span><span class="delete">of the digits </span><span class="equal">will be 2 times the number of 2s in the number. Therefore, the number of 2s must be </span><span class="delete">such that 2 * (number of 2s) is divisible by 3. Which means that the number of 2s must be </span><span class="equal">a multiple of </span><span class="replace-del">3.</span><span class="replace-ins">3</span><span class="equal"> </span><span class="replace-del">Because</span><span class="replace-ins">(since</span><span class="equal"> 2 and 3 are </span><span class="replace-del">coprime.</span><span class="replace-ins">coprime).</span><span class="equal"> So, </span><span class="replace-del">if</span><span class="replace-ins">the</span><span class="equal"> </span><span class="replace-del">I</span><span class="replace-ins">number must</span><span class="equal"> have 3, 6, 9, etc., number of </span><span class="replace-del">2s,</span><span class="replace-ins">2s.
+
+Putting</span><span class="equal"> </span><span class="replace-del">then</span><span class="replace-ins">these</span><span class="equal"> </span><span class="replace-del">the sum will be divisible by 3.
+
+So, combining both conditions,</span><span class="replace-ins">together,</span><span class="equal"> the number must end with </span><span class="delete">0, and have a number of 2s that is a multiple of 3. Therefore, the number is made up of some number of 2s (at least 3, since 3 is the smallest multiple of 3) followed by a 0. But wait, maybe not necessarily. Wait, the number can have other digits as well, but since we can only use </span><span class="equal">0</span><span class="delete"> and 2, the digits are only 0s and 2s. So, the number must end with 0,</span><span class="equal"> and have at least three </span><span class="replace-del">2s</span><span class="replace-ins">2s.</span><span class="equal"> </span><span class="replace-del">(since</span><span class="replace-ins">Now,</span><span class="equal"> </span><span class="replace-del">3</span><span class="replace-ins">the challenge</span><span class="equal"> is</span><span class="insert"> to find</span><span class="equal"> the smallest </span><span class="replace-del">multiple</span><span class="replace-ins">such</span><span class="equal"> </span><span class="replace-del">of</span><span class="replace-ins">number.
+
+Let</span><span class="equal"> </span><span class="replace-del">3).</span><span class="replace-ins">me</span><span class="equal"> </span><span class="replace-del">But</span><span class="replace-ins">start</span><span class="equal"> </span><span class="replace-del">maybe</span><span class="replace-ins">by</span><span class="equal"> </span><span class="replace-del">there&#x27;s</span><span class="replace-ins">considering</span><span class="equal"> </span><span class="replace-del">a smaller number if the digits are arranged in a way</span><span class="replace-ins">numbers</span><span class="equal"> that </span><span class="replace-del">the total number of 2s is 3, but the number is smaller than numbers with more 2s?
+
+But let&#x27;s think. For example, the smallest number ending</span><span class="replace-ins">end</span><span class="equal"> with 0 and </span><span class="replace-del">having</span><span class="replace-ins">have</span><span class="equal"> three </span><span class="replace-del">2s</span><span class="replace-ins">2s. The smallest such number</span><span class="equal"> would be 2220. </span><span class="insert">Let me check if that&#x27;s correct.
+
+</span><span class="equal">But</span><span class="insert"> wait,</span><span class="equal"> maybe </span><span class="replace-del">there is</span><span class="replace-ins">there&#x27;s</span><span class="equal"> a smaller number with more digits but with </span><span class="replace-del">fewer</span><span class="replace-ins">digits</span><span class="equal"> </span><span class="replace-del">digits?</span><span class="replace-ins">arranged</span><span class="equal"> </span><span class="replace-del">Wait, no. Because if you have three 2s and</span><span class="replace-ins">in</span><span class="equal"> a </span><span class="replace-del">0,</span><span class="replace-ins">way that</span><span class="equal"> the number is </span><span class="replace-del">2220. But maybe there is a number with more digits but with fewer total digits? Wait, no.</span><span class="replace-ins">smaller?</span><span class="equal"> For example, </span><span class="replace-del">2020?</span><span class="replace-ins">numbers</span><span class="equal"> </span><span class="replace-del">Let</span><span class="replace-ins">like</span><span class="equal"> </span><span class="replace-del">me</span><span class="replace-ins">2020</span><span class="equal"> </span><span class="replace-del">check.</span><span class="replace-ins">or 20020. But let&#x27;s check:
+
+-</span><span class="equal"> 2020 ends with 0, </span><span class="replace-del">and</span><span class="replace-ins">has</span><span class="equal"> </span><span class="replace-del">the</span><span class="replace-ins">two</span><span class="equal"> </span><span class="replace-del">digits</span><span class="replace-ins">2s.</span><span class="equal"> </span><span class="replace-del">are 2, 0, 2, 0. The sum</span><span class="replace-ins">Sum</span><span class="equal"> is 2 + 0 + 2 + 0 = 4, </span><span class="delete">which is </span><span class="equal">not divisible by 3. So </span><span class="replace-del">that&#x27;s</span><span class="replace-ins">no.
+-</span><span class="equal"> </span><span class="replace-del">not good. How about 220? That</span><span class="replace-ins">20020</span><span class="equal"> ends with 0, </span><span class="replace-del">digits</span><span class="replace-ins">has</span><span class="equal"> </span><span class="replace-del">are</span><span class="replace-ins">two</span><span class="equal"> </span><span class="replace-del">2, 2, 0.</span><span class="replace-ins">2s.</span><span class="equal"> Sum is </span><span class="replace-del">4,</span><span class="replace-ins">2 + 0 + 0 + 2 + 0 = 4. Still</span><span class="equal"> not divisible by 3.</span><span class="insert">
+-</span><span class="equal"> </span><span class="replace-del">200?</span><span class="replace-ins">2200 ends with 0, has two 2s.</span><span class="equal"> Sum is </span><span class="replace-del">2,</span><span class="replace-ins">2</span><span class="equal"> </span><span class="replace-del">not</span><span class="replace-ins">+</span><span class="equal"> </span><span class="replace-del">divisible</span><span class="replace-ins">2</span><span class="equal"> </span><span class="replace-del">by</span><span class="replace-ins">+</span><span class="equal"> </span><span class="replace-del">3.</span><span class="replace-ins">0</span><span class="equal"> </span><span class="replace-del">2220</span><span class="replace-ins">+ 0 = 4. Not good.
+- 20220 ends with 0, has three 2s. Sum</span><span class="equal"> is </span><span class="replace-del">sum</span><span class="replace-ins">2 + 0 + 2 + 2 + 0 =</span><span class="equal"> 6, which is divisible by 3. </span><span class="insert">But 20220 is a five-digit number, which is larger than 2220 (a four-digit number). </span><span class="equal">So 2220 is </span><span class="insert">smaller.
+
+What about numbers with three 2s and ending with 0 but arranged in </span><span class="equal">a </span><span class="replace-del">multiple</span><span class="replace-ins">smaller</span><span class="equal"> </span><span class="replace-del">of</span><span class="replace-ins">way?</span><span class="equal"> </span><span class="replace-del">30?</span><span class="replace-ins">For</span><span class="equal"> </span><span class="replace-del">Let</span><span class="replace-ins">example,</span><span class="equal"> </span><span class="replace-del">me</span><span class="replace-ins">20220</span><span class="equal"> </span><span class="replace-del">check.
+
+2220</span><span class="replace-ins">is</span><span class="equal"> </span><span class="replace-del">divided</span><span class="replace-ins">five digits. The four-digit numbers with three 2s would be 2220, 2202, 2022. But 2202 ends with 2, so not divisible</span><span class="equal"> by </span><span class="replace-del">30</span><span class="replace-ins">5.</span><span class="equal"> </span><span class="replace-del">is</span><span class="replace-ins">Similarly,</span><span class="equal"> </span><span class="replace-del">74.</span><span class="replace-ins">2022 ends with 2. Only 2220 ends with 0.</span><span class="equal"> So</span><span class="delete"> yes,</span><span class="equal"> 2220 is </span><span class="replace-del">30*74.</span><span class="replace-ins">the</span><span class="equal"> </span><span class="replace-del">But</span><span class="replace-ins">smallest</span><span class="equal"> </span><span class="replace-del">is there a smaller number?
+
+Wait, maybe there is a smaller</span><span class="replace-ins">four-digit</span><span class="equal"> number </span><span class="replace-del">with</span><span class="replace-ins">meeting</span><span class="equal"> </span><span class="replace-del">more</span><span class="replace-ins">the</span><span class="equal"> </span><span class="replace-del">digits?</span><span class="replace-ins">criteria.
+
+But</span><span class="equal"> </span><span class="replace-del">Wait,</span><span class="replace-ins">let</span><span class="equal"> </span><span class="replace-del">no.</span><span class="replace-ins">me</span><span class="equal"> </span><span class="replace-del">Because</span><span class="replace-ins">check</span><span class="equal"> </span><span class="replace-del">2220</span><span class="replace-ins">if</span><span class="equal"> </span><span class="replace-del">is a four-digit number. Maybe there is</span><span class="replace-ins">there&#x27;s</span><span class="equal"> a three-digit </span><span class="replace-del">number? Let&#x27;s see.</span><span class="replace-ins">number.</span><span class="equal"> The three-digit numbers ending with 0 are 200, </span><span class="delete">220, 2020? No, three-digit numbers. So 200, 220, 202? Wait, no. The three-digit numbers ending with 0 would be 200, 220, 200, 220, 200... Wait, 200 is 2-0-0. 220 is 2-2-0. 202 is not ending with 0. So only 200 and </span><span class="equal">220. </span><span class="replace-del">Both have</span><span class="replace-ins">Their</span><span class="equal"> digit sums</span><span class="insert"> are</span><span class="equal"> 2 and 4, </span><span class="replace-del">which aren&#x27;t</span><span class="replace-ins">neither</span><span class="equal"> divisible by 3. So no.
+
+</span><span class="replace-del">What about four-digit numbers? 2000? Sum is 2, not divisible by 3. 2020: sum 4. 2200: sum 4. 2220: sum 6. So</span><span class="replace-ins">Therefore,</span><span class="equal"> 2220 </span><span class="replace-del">is</span><span class="replace-ins">seems to be</span><span class="equal"> the </span><span class="replace-del">first</span><span class="replace-ins">smallest.</span><span class="equal"> </span><span class="replace-del">one.</span><span class="replace-ins">However,</span><span class="equal"> </span><span class="replace-del">But</span><span class="replace-ins">let</span><span class="equal"> </span><span class="replace-del">maybe</span><span class="replace-ins">me</span><span class="equal"> </span><span class="replace-del">there</span><span class="replace-ins">check</span><span class="equal"> </span><span class="replace-del">is</span><span class="replace-ins">if there&#x27;s</span><span class="equal"> a </span><span class="replace-del">smaller</span><span class="replace-ins">multiple</span><span class="equal"> </span><span class="replace-del">number</span><span class="replace-ins">of</span><span class="equal"> </span><span class="replace-del">with more digits? Wait, 2020 is 2020, which is less than 2220. But 2020&#x27;s digit sum is 4, which isn&#x27;t divisible by 3. So not good. How about 2002? But that ends with 2, not 0. So invalid. So maybe 2220 is the first one? But maybe there is another number</span><span class="replace-ins">30</span><span class="equal"> with more digits but smaller in </span><span class="replace-del">value?</span><span class="replace-ins">value.</span><span class="equal"> For example, </span><span class="replace-del">2000...</span><span class="replace-ins">numbers like 200...</span><span class="equal"> but </span><span class="replace-del">that&#x27;s</span><span class="replace-ins">they are larger. For example, 2000 is</span><span class="equal"> 2000, which is smaller than </span><span class="replace-del">2220,</span><span class="replace-ins">2220</span><span class="equal"> but</span><span class="delete"> 2000 is</span><span class="equal"> not divisible by 3.</span><span class="delete"> 2000 divided by 3 is 666.666... So no. How about 2020?</span><span class="equal"> 2020 is 2020, which is </span><span class="replace-del">less</span><span class="replace-ins">smaller</span><span class="equal"> than </span><span class="replace-del">2220,</span><span class="replace-ins">2220</span><span class="equal"> but sum</span><span class="delete"> is 4, not divisible by 3. 2002 is invalid. 2200 is 2200, which is less than 2220. Sum</span><span class="equal"> is 4. Not divisible by 3.</span><span class="replace-del"> 2220 is 2220. So</span><span class="replace-ins">
+
+Alternatively,</span><span class="equal"> maybe</span><span class="delete"> 2220 is the answer? But wait, maybe there is a number with more digits but smaller in value? For example, 200... something? But</span><span class="equal"> numbers with more </span><span class="replace-del">digits</span><span class="replace-ins">2s</span><span class="equal"> </span><span class="replace-del">would</span><span class="replace-ins">but</span><span class="equal"> </span><span class="replace-del">be</span><span class="replace-ins">arranged</span><span class="equal"> </span><span class="replace-del">larger,</span><span class="replace-ins">in</span><span class="equal"> </span><span class="replace-del">right?</span><span class="replace-ins">a way that the number is smaller.</span><span class="equal"> Wait, </span><span class="delete">no. Wait, 2000 is four digits, </span><span class="equal">but</span><span class="delete"> 2220 is also four digits. So 2000 is smaller than 2220. But 2000 is not divisible by 3. So maybe there is another number with more digits but smaller in value? Wait, for example, 200... but with more digits. But</span><span class="equal"> numbers with more digits are longer, so they are larger. For example, </span><span class="replace-del">2000 is four digits, 20000</span><span class="replace-ins">20220</span><span class="equal"> is five digits, which is </span><span class="replace-del">larger. So maybe 2220 is the smallest? But wait, maybe there is a number with digits 2 and 0, ending with 0, with sum of digits divisible by 3, and smaller</span><span class="replace-ins">larger</span><span class="equal"> than 2220.
+
+</span><span class="delete">Wait, let&#x27;s think of numbers with digits 0 and 2, ending with 0, and with digit sum divisible by 3. Let&#x27;s think of numbers in order.
+
+Start with 20: ends with 0, sum is 2, not divisible by 3.
+
+200: sum 2, nope.
+
+2000: sum 2, nope.
+
+20000: same.
+
+Then numbers with two 2s and ending with 0. For example, 220: sum 4, nope. 2020: sum 4. 20020: sum 4. 2200: sum 4. 2020: sum 4. So none of these work.
+
+Numbers with three 2s and ending with 0. </span><span class="equal">So,</span><span class="delete"> 2220: sum 6, which is divisible by 3. That works. But is there a smaller number with three 2s and ending with 0? For example, 20220? Wait, that&#x27;s five digits. 20220 is larger than 2220. How about 22020? Also larger. 20220 is 20220, which is larger than 2220. So</span><span class="equal"> 2220 is the smallest </span><span class="replace-del">with</span><span class="replace-ins">number</span><span class="equal"> </span><span class="replace-del">three</span><span class="replace-ins">that</span><span class="equal"> </span><span class="replace-del">2s. 
+
+</span><span class="replace-ins">meets all the criteria. Let me confirm by checking if 2220 is indeed divisible by 30. 2220 divided by 30 is 74, which is an integer. So yes, it works.
+
+</span><span class="equal">But wait, </span><span class="replace-del">what</span><span class="replace-ins">I</span><span class="equal"> </span><span class="replace-del">about</span><span class="replace-ins">remember</span><span class="equal"> </span><span class="replace-del">numbers</span><span class="replace-ins">that sometimes there might be a smaller number</span><span class="equal"> with more digits but with digits arranged </span><span class="replace-del">such</span><span class="replace-ins">in a way</span><span class="equal"> that the number is </span><span class="replace-del">smaller?</span><span class="replace-ins">smaller. Let me think again.</span><span class="equal"> For example, 200... </span><span class="replace-del">something?</span><span class="replace-ins">but</span><span class="equal"> </span><span class="replace-del">But</span><span class="replace-ins">no. Wait, what about</span><span class="equal"> numbers </span><span class="replace-del">with more digits would be larger. For example, 2000 is smaller than 2220, but it&#x27;s not divisible by 3. How about</span><span class="replace-ins">like</span><span class="equal"> 2020? It&#x27;s 2020, which is smaller than 2220, but sum is 4. Not divisible by 3. How about 2002? </span><span class="delete">But that ends with 2, so not divisible by 5. So invalid. 
+
+Alternatively, maybe numbers with more 2s but arranged in a way that the number is smaller. Wait, but how? For example, 2020 is smaller than 2220, but it doesn&#x27;t satisfy the divisibility by 3. What if there&#x27;s a number with more digits but with digits summing to 6? Let me think. For example, 20020? Sum is 2 + 0 + 0 + 2 + 0 = 4. Not enough. 20202? </span><span class="equal">Ends with 2, not 0. Not valid.</span><span class="delete"> 20002? Ends with 2. Not valid. 20022? Ends with 2. Not valid. 20220? Ends with 0. Sum is 2 + 0 + 2 + 2 + 0 = 6. So that&#x27;s 20220. Which is 20220. Is that smaller than 2220? No, 20220 is 20,220, which is bigger than 2,220. So 2220 is smaller.</span><span class="equal">
+
+</span><span class="replace-del">Wait, but</span><span class="replace-ins">Alternatively,</span><span class="equal"> maybe </span><span class="delete">there is a number with digits 2 and 0, ending with 0, with digit sum 6, but with fewer digits than 2220? The number 2220 is four digits. Is there a three-digit number? The three-digit </span><span class="equal">numbers</span><span class="delete"> ending with 0 are 200, 220. Their digit sums are 2 and 4, which aren&#x27;t 6. So no. Therefore, 2220 is the first candidate.
+
+But wait, let me check if 2220 is indeed the answer. However, I feel like maybe there is a smaller number. Let me think again.
+
+Wait, maybe there is a number with more digits but smaller in value? For example, 200... but with more digits? But numbers with more digits are longer, so they are larger. For example, 2000 is 2000, which is smaller than 2220. But 2000 is not divisible by 3. How about 2020? 2020 is 2020, which is smaller than 2220. But sum is 4. Not divisible by 3. 20020 is 20020, which is larger than 2220. So no. 2200 is 2200, which is smaller than 2220? No, 2200 is 2200, which is less than 2220. Wait, 2200 is 2200, which is less than 2220. But the sum of digits is 2 + 2 + 0 + 0 = 4, which is not divisible by 3. So not good. So 2200 is invalid. 
+
+How about 20220? That&#x27;s 20220, which is larger than 2220. So 2220 is still smaller. 
+
+Wait, but what about numbers with more 2s but with leading zeros? No, numbers can&#x27;t have leading zeros. So 0220 is not a valid number. So, 2220 is the first candidate. 
+
+But maybe there is a number with more digits but with digits arranged such that the number is smaller? For example, 200... but I don&#x27;t think so. Because even if you have more digits, the number would be longer. For example, 2000 is 2000, which is four digits. 2220 is four digits. So, 2000 is smaller, but not divisible by 3. 
+
+Wait, but maybe there is a number with five digits? Let me think. For example, 20020. As before, sum is 4. Not divisible by 3. 20202? Ends with 2, invalid. 20220: sum 6, which is 20220. Which is 20220, which is larger than 2220. So no. 
+
+Alternatively, 22020: sum 2 + 2 + 0 + 2 + 0 = 6. That is 22020, which is larger than 2220. 
+
+So, seems</span><span class="equal"> like 2220 is the </span><span class="replace-del">smallest.</span><span class="replace-ins">answer.</span><span class="equal"> But</span><span class="delete"> wait,</span><span class="equal"> let me check </span><span class="replace-del">if</span><span class="replace-ins">another</span><span class="equal"> </span><span class="replace-del">there</span><span class="replace-ins">approach.</span><span class="equal"> </span><span class="replace-del">is</span><span class="replace-ins">Let</span><span class="equal"> </span><span class="replace-del">a</span><span class="replace-ins">me</span><span class="equal"> </span><span class="replace-del">number</span><span class="replace-ins">think of numbers composed of 0s and 2s, ending</span><span class="equal"> with </span><span class="replace-del">more</span><span class="replace-ins">0,</span><span class="equal"> </span><span class="replace-del">digits</span><span class="replace-ins">and</span><span class="equal"> </span><span class="replace-del">but</span><span class="replace-ins">check their divisibility by 3.
+
+Start from the smallest numbers:
+
+- 20: ends</span><span class="equal"> with </span><span class="replace-del">the</span><span class="replace-ins">0,</span><span class="equal"> </span><span class="replace-del">same</span><span class="replace-ins">sum</span><span class="equal"> </span><span class="replace-del">number</span><span class="replace-ins">2.</span><span class="equal"> </span><span class="replace-del">of</span><span class="replace-ins">Not</span><span class="equal"> </span><span class="replace-del">digits?</span><span class="replace-ins">divisible</span><span class="equal"> </span><span class="replace-del">For</span><span class="replace-ins">by</span><span class="equal"> </span><span class="replace-del">example,</span><span class="replace-ins">3.
+-</span><span class="equal"> </span><span class="replace-del">maybe</span><span class="replace-ins">200: sum 2. No.
+- 2000: sum 2. No.
+- 220: sum 4. No.
+- 2200: sum 4. No.
+- 2020: sum 4. No.
+- 20020: sum 4. No.
+- 20220: sum 6. Yes!</span><span class="equal"> 20220 is </span><span class="replace-del">five</span><span class="replace-ins">divisible</span><span class="equal"> </span><span class="replace-del">digits,</span><span class="replace-ins">by 3. But 20220 is larger than 2220.
+
+Wait,</span><span class="equal"> but 2220 is </span><span class="replace-del">four digits.</span><span class="replace-ins">smaller.</span><span class="equal"> So 2220 is </span><span class="replace-del">smaller. 
+
+Alternatively,</span><span class="replace-ins">the answer. Therefore, the least positive integer multiple of 30 that can be written with only the digits 0 and 2</span><span class="equal"> is </span><span class="replace-del">there</span><span class="replace-ins">2220.
+
+But</span><span class="equal"> </span><span class="replace-del">a</span><span class="replace-ins">hold</span><span class="equal"> </span><span class="replace-del">number</span><span class="replace-ins">on,</span><span class="equal"> </span><span class="replace-del">with</span><span class="replace-ins">I</span><span class="equal"> </span><span class="replace-del">three</span><span class="replace-ins">just</span><span class="equal"> </span><span class="replace-del">digits?</span><span class="replace-ins">thought</span><span class="equal"> </span><span class="replace-del">No,</span><span class="replace-ins">of</span><span class="equal"> </span><span class="replace-del">as</span><span class="replace-ins">another</span><span class="equal"> </span><span class="replace-del">discussed. 
+
+Wait, but wait.</span><span class="replace-ins">possibility.</span><span class="equal"> What about</span><span class="delete"> numbers like 220? No, sum is 4. 202? Ends with 2. 200? Sum 2. 
+
+Alternatively, maybe</span><span class="equal"> numbers with more 2s but arranged in a way that the number is smaller? For example, 200... but no.</span><span class="delete"> 
+
+Alternatively,</span><span class="equal"> </span><span class="replace-del">maybe numbers like 2020? But sum is 4. Not divisible by 3. 
+
+Alternatively,</span><span class="replace-ins">Or</span><span class="equal"> maybe numbers like 2220 is the </span><span class="replace-del">answer.</span><span class="replace-ins">smallest.</span><span class="equal"> </span><span class="insert">Therefore, I think 2220 is correct.
+
+</span><span class="equal">But let me check </span><span class="insert">another angle. Maybe there is a number with digits 2 and 0, ending with 0, with sum of digits 6 (which is divisible by 3) but with fewer digits than 2220. The smallest such number would be 2220 (four digits). There&#x27;s no three-digit number with sum 6. For example, 222 is three digits, but it ends with 2, not 0. So invalid. Therefore, 2220 is indeed the smallest.
+
+So, after checking all possibilities, I conclude that 2220 is the correct answer.
+&lt;/think&gt;
+
+To determine the **least positive integer multiple of 30** that can be written using **only the digits 0 and 2**, we must satisfy the following constraints:
+
+---
+
+### **Divisibility Requirements**
+
+Since 30 = 2 × 3 × 5, the number must be divisible by **2, 3, and 5**.
+
+- **Divisible by 2**: The number must end in an even digit. Since only 0 and 2 are allowed, the number must end in **0**.
+- **Divisible by 5**: The number must also end in **0** (as 5 divides only numbers ending in 0 or 5, and 5 is not allowed).
+- **Divisible by 3**: The **sum of the digits** must be divisible by 3. Since only digits 0 and 2 are allowed, the digit sum is **2 × (number of 2s)**. For this to be divisible by 3, the number of 2s must be a multiple of 3.
+
+---
+
+### **Constructing the Number**
+
+We need a number:
+
+- Ending in **0** (to satisfy divisibility by 2 and 5),
+- Containing **at least 3 twos** (to satisfy divisibility by 3),
+- And composed only of the digits **0 and 2**.
+
+The **smallest such number** is formed by placing **three 2s** followed by a single **0**, i.e., **2220**.
+
+- **Digits**: 2, 2, 2, 0
+- **Sum of digits**: 2 + 2 + 2 + 0 = 6 (divisible by 3)
+- **Ends in 0** (satisfies divisibility by 2 and 5)
+- **Total digits**: 4 (minimal possible for such a configuration)
+
+We check whether there exists a **smaller** number that satisfies all conditions. For example:
+
+- **220** → ends in 0, sum = 4 → not divisible by 3
+- **2020** → ends in 0, sum = 4 → not divisible by 3
+- **2000** → ends in 0, sum = 2 → not divisible by 3
+- **20220** → ends in 0, sum = 6 → divisible by 3, but is a **5-digit number**, which is **larger** than 2220
+
+No smaller number than 2220 satisfies all the criteria.
+
+---
+
+### **Verification**
+
+Check </span><span class="equal">if </span><span class="replace-del">there&#x27;s</span><span class="replace-ins">**2220** is a multiple of 30:
+
+$$
+2220 \div 30 = 74 \quad \text{(integer)}
+$$
+
+Hence, **2220** is indeed</span><span class="equal"> a multiple of 30 </span><span class="delete">that is smaller. Let me think of multiples of 30 </span><span class="equal">and </span><span class="replace-del">check</span><span class="replace-ins">satisfies</span><span class="equal"> </span><span class="replace-del">if</span><span class="replace-ins">the</span><span class="equal"> </span><span class="replace-del">they</span><span class="replace-ins">digit</span><span class="equal"> </span><span class="replace-del">have</span><span class="replace-ins">constraint.
+
+---
+
+###</span><span class="equal"> </span><span class="replace-del">only</span><span class="replace-ins">✅</span><span class="equal"> </span><span class="replace-del">0</span><span class="replace-ins">Final</span><span class="equal"> </span><span class="replace-del">and 2 digits. 
+
+The multiples of 30 are 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330, 360, 390, 420, 450, 480, 510, 540, 570, 600, etc. 
+
+Check each of these:</span><span class="replace-ins">Answer</span><span class="equal">
+
+</span><span class="replace-del">- 30: digits 3 and 0. 3 is not allowed. So no.
+
+- 60: digits 6 and 0. 6 is not allowed. No.
+
+- 90: 9 and 0. 9 is not allowed. No.
+
+- 120: digits 1, 2, 0. 1 is not allowed. No.
+
+- 150: 1,5,0. 1 and 5 not allowed.
+
+- 180: 1,8,0. No.
+
+- 210: 2,1,0. 1 not allowed.
+
+- 240: 2,4,0. 4 not allowed.
+
+- 270: 2,7,0. 7 not allowed.
+
+- 300: 3,0,0. 3 not allowed.
+
+- 330: 3,3,0. 3 not allowed.
+
+- 360: 3,6,0. 3 and 6 not allowed.
+
+- 390: 3,9,0. No.
+
+- 420: 4,2,0. 4 not allowed.
+
+- 450: 4,5,0. No.
+
+- 480: 4,8,0. No.
+
+- 510: 5,1,0. No.
+
+- 540: 5,4,0. No.
+
+- 570: 5,7,0. No.
+
+- 600: 6,0,0. 6 not allowed.
+
+- 630: 6,3,0. No.
+
+- 660: 6,6,0. No.
+
+- 690: 6,9,0. No.
+
+- 720: 7,2,0. 7 not allowed.
+
+- 750: 7,5,0. No.
+
+- 780: 7,8,0. No.
+
+- 810: 8,1,0. No.
+
+- 840: 8,4,0. No.
+
+- 870: 8,7,0. No.
+
+- 900: 9,0,0. No.
+
+- 930: 9,3,0. No.
+
+- 960: 9,6,0. No.
+
+- 990: 9,9,0. No.
+
+- 1020: 1,0,2,0. 1 is not allowed.
+
+- 1050: 1,0,5,0. No.
+
+- 1080: 1,0,8,0. No.
+
+- 1110: 1,1,1,0. No.
+
+- 1140: 1,1,4,0. No.
+
+- 1170: 1,1,7,0. No.
+
+- 1200: 1,2,0,0. 1 is not allowed.
+
+- 1230: 1,2,3,0. No.
+
+- 1260: 1,2,6,0. No.
+
+- 1290: 1,2,9,0. No.
+
+- 1320: 1,3,</span><span class="replace-ins">$$
+\boxed{2220}
+$$</span></div>
+
+<h2>R1 &rarr; R2_regen
+  <small>(overlap 0.221 &middot; len ratio 1.00)</small></h2>
+<div class="diff"><span class="equal">&lt;think&gt;
+Okay, so I need to find the smallest positive integer multiple of 30 that only </span><span class="replace-del">has</span><span class="replace-ins">uses the</span><span class="equal"> digits 0 and 2. </span><span class="replace-del">Let</span><span class="replace-ins">Hmm, let</span><span class="equal"> me </span><span class="replace-del">think</span><span class="replace-ins">think.</span><span class="equal"> </span><span class="delete">about how to approach this. 
+
+</span><span class="equal">First, let me recall that 30 </span><span class="replace-del">factors</span><span class="replace-ins">is</span><span class="equal"> </span><span class="replace-del">into</span><span class="replace-ins">2</span><span class="equal"> </span><span class="replace-del">2,</span><span class="replace-ins">times</span><span class="equal"> </span><span class="replace-del">3,</span><span class="replace-ins">3</span><span class="equal"> </span><span class="replace-del">and</span><span class="replace-ins">times</span><span class="equal"> 5. So, any multiple of 30 must be divisible by 2, 3, and 5.</span><span class="replace-del"> </span><span class="replace-ins"> 
+
+</span><span class="equal">Let me break down the </span><span class="replace-del">requirements:
+
+1.</span><span class="replace-ins">divisibility</span><span class="equal"> </span><span class="replace-del">Divisible</span><span class="replace-ins">rules for each of these. For a number to be divisible</span><span class="equal"> by </span><span class="replace-del">2:</span><span class="replace-ins">2,</span><span class="equal"> </span><span class="replace-del">The</span><span class="replace-ins">it</span><span class="equal"> </span><span class="replace-del">number</span><span class="replace-ins">has</span><span class="equal"> </span><span class="replace-del">must</span><span class="replace-ins">to</span><span class="equal"> end with an even digit. Since we can only use 0 and 2, the last digit has to be 0 or 2. But </span><span class="replace-del">since</span><span class="replace-ins">for</span><span class="equal"> </span><span class="replace-del">it&#x27;s divisible</span><span class="replace-ins">divisibility</span><span class="equal"> by </span><span class="replace-del">5</span><span class="replace-ins">5,</span><span class="equal"> </span><span class="replace-del">as</span><span class="replace-ins">the</span><span class="equal"> </span><span class="replace-del">well,</span><span class="replace-ins">number must end with 0 or 5. However, since we can&#x27;t use 5,</span><span class="equal"> the number must end with 0. </span><span class="delete">Because 5 divides a number only if it ends with 0 or 5. But since we can&#x27;t use 5, it has to end with 0. </span><span class="equal">So, </span><span class="replace-del">the</span><span class="replace-ins">that</span><span class="equal"> </span><span class="replace-del">number</span><span class="replace-ins">means whatever multiple of 30 we&#x27;re looking for</span><span class="equal"> must end with </span><span class="insert">a </span><span class="equal">0. </span><span class="replace-del">Therefore,</span><span class="replace-ins">So,</span><span class="equal"> the last digit is 0.</span><span class="insert"> 
+
+Also,</span><span class="equal"> </span><span class="replace-del">So,</span><span class="replace-ins">for</span><span class="equal"> </span><span class="replace-del">the number must end with 0. That simplifies things a bit. So, any candidate number must end with 0.
+
+2. Divisible</span><span class="replace-ins">divisibility</span><span class="equal"> by </span><span class="replace-del">3:</span><span class="replace-ins">3,</span><span class="equal"> </span><span class="replace-del">The</span><span class="replace-ins">the</span><span class="equal"> sum of the digits </span><span class="replace-del">must</span><span class="replace-ins">has to</span><span class="equal"> be a multiple of 3. Since the digits can only be 0 </span><span class="replace-del">and</span><span class="replace-ins">or</span><span class="equal"> 2, the sum</span><span class="delete"> of the digits</span><span class="equal"> will be 2 times the number of 2s in the number. </span><span class="replace-del">Therefore, the number of 2s must be such that 2 * (number of 2s) is divisible by 3. Which means that</span><span class="replace-ins">So,</span><span class="equal"> the number of 2s must be a multiple of 3. Because 2 </span><span class="replace-del">and</span><span class="replace-ins">times</span><span class="equal"> </span><span class="replace-del">3 are coprime. So, if I have 3, 6, 9, etc.,</span><span class="replace-ins">that</span><span class="equal"> number </span><span class="replace-del">of</span><span class="replace-ins">has</span><span class="equal"> </span><span class="replace-del">2s, then the sum will</span><span class="replace-ins">to</span><span class="equal"> be divisible by 3.</span><span class="replace-del">
+
+</span><span class="replace-ins"> </span><span class="equal">So, </span><span class="replace-del">combining</span><span class="replace-ins">if</span><span class="equal"> </span><span class="replace-del">both</span><span class="replace-ins">there</span><span class="equal"> </span><span class="replace-del">conditions,</span><span class="replace-ins">are k 2s, then 2k must be divisible by 3. Therefore, k must be a multiple of 3. 
+
+So, putting it all together:</span><span class="equal"> the number must end with 0, and have a number of 2s that is a multiple of 3. </span><span class="replace-del">Therefore,</span><span class="replace-ins">Also,</span><span class="equal"> the number </span><span class="replace-del">is</span><span class="replace-ins">should</span><span class="equal"> </span><span class="replace-del">made</span><span class="replace-ins">be</span><span class="equal"> </span><span class="replace-del">up</span><span class="replace-ins">as</span><span class="equal"> </span><span class="replace-del">of</span><span class="replace-ins">small</span><span class="equal"> </span><span class="replace-del">some</span><span class="replace-ins">as possible. 
+
+So, the smallest number would be the one with the least</span><span class="equal"> number of </span><span class="replace-del">2s</span><span class="replace-ins">digits.</span><span class="equal"> </span><span class="replace-del">(at</span><span class="replace-ins">Let</span><span class="equal"> </span><span class="replace-del">least</span><span class="replace-ins">me</span><span class="equal"> </span><span class="replace-del">3,</span><span class="replace-ins">think.</span><span class="equal"> </span><span class="replace-del">since</span><span class="replace-ins">Since</span><span class="equal"> </span><span class="replace-del">3</span><span class="replace-ins">it</span><span class="equal"> </span><span class="replace-del">is</span><span class="replace-ins">has</span><span class="equal"> </span><span class="replace-del">the</span><span class="replace-ins">to</span><span class="equal"> </span><span class="replace-del">smallest</span><span class="replace-ins">end</span><span class="equal"> </span><span class="replace-del">multiple</span><span class="replace-ins">with</span><span class="equal"> </span><span class="replace-del">of 3) followed by a 0. But wait, maybe not necessarily. Wait,</span><span class="replace-ins">0,</span><span class="equal"> the number </span><span class="replace-del">can</span><span class="replace-ins">can&#x27;t</span><span class="equal"> have</span><span class="insert"> any</span><span class="equal"> other digits </span><span class="replace-del">as well, but since we can only use</span><span class="replace-ins">except</span><span class="equal"> 0 and 2, </span><span class="insert">and </span><span class="equal">the </span><span class="replace-del">digits</span><span class="replace-ins">last</span><span class="equal"> </span><span class="replace-del">are</span><span class="replace-ins">digit</span><span class="equal"> </span><span class="replace-del">only</span><span class="replace-ins">is</span><span class="equal"> </span><span class="replace-del">0s</span><span class="replace-ins">0. 
+
+Let</span><span class="equal"> </span><span class="replace-del">and</span><span class="replace-ins">me</span><span class="equal"> </span><span class="replace-del">2s.</span><span class="replace-ins">try</span><span class="equal"> </span><span class="replace-del">So,</span><span class="replace-ins">to think of possible numbers. Let me start with the smallest possible numbers. 
+
+First,</span><span class="equal"> the number must </span><span class="insert">be divisible by 10, so it must </span><span class="equal">end with </span><span class="replace-del">0,</span><span class="replace-ins">0.</span><span class="equal"> </span><span class="replace-del">and have at least three 2s (since 3 is</span><span class="replace-ins">So,</span><span class="equal"> the smallest </span><span class="delete">multiple of 3). But maybe there&#x27;s a smaller number if the digits are arranged in a way that the total number of 2s is 3, but the number is smaller than </span><span class="equal">numbers</span><span class="delete"> with more 2s?
+
+But let&#x27;s think. For example, the smallest number ending with 0 and having three 2s</span><span class="equal"> would be </span><span class="replace-del">2220.</span><span class="replace-ins">20, 200, 220, 2020, etc.</span><span class="equal"> But </span><span class="replace-del">maybe</span><span class="replace-ins">let&#x27;s</span><span class="equal"> </span><span class="replace-del">there is a smaller number with more digits but with fewer digits? Wait, no. Because</span><span class="replace-ins">check</span><span class="equal"> if </span><span class="replace-del">you</span><span class="replace-ins">they</span><span class="equal"> </span><span class="replace-del">have</span><span class="replace-ins">are</span><span class="equal"> </span><span class="replace-del">three</span><span class="replace-ins">divisible</span><span class="equal"> </span><span class="replace-del">2s</span><span class="replace-ins">by</span><span class="equal"> </span><span class="replace-del">and a 0, the number is 2220. But maybe there is a number with more digits but with fewer total digits? Wait, no. </span><span class="replace-ins">3. 
+
+</span><span class="equal">For example, </span><span class="replace-del">2020? Let me check. 2020 ends with 0, and the</span><span class="replace-ins">20:</span><span class="equal"> digits </span><span class="replace-del">are</span><span class="replace-ins">sum to 2 + 0 =</span><span class="equal"> 2, </span><span class="replace-del">0,</span><span class="replace-ins">which</span><span class="equal"> </span><span class="replace-del">2,</span><span class="replace-ins">is</span><span class="equal"> </span><span class="replace-del">0.</span><span class="replace-ins">not</span><span class="equal"> </span><span class="replace-del">The</span><span class="replace-ins">divisible by 3. So, no. 
+
+Next, 200: sum is 2 + 0 + 0 = 2. Not divisible by 3. 
+
+Next, 220: sum is 2 + 2 + 0 = 4. Not divisible by 3. 
+
+Next, 2020:</span><span class="equal"> sum is 2 + 0 + 2 + 0 = </span><span class="replace-del">4,</span><span class="replace-ins">4.</span><span class="equal"> </span><span class="replace-del">which is</span><span class="replace-ins">Still</span><span class="equal"> not divisible by 3.</span><span class="insert"> 
+
+Then</span><span class="equal"> </span><span class="replace-del">So</span><span class="replace-ins">2220:</span><span class="equal"> </span><span class="replace-del">that&#x27;s not good. How about 220? That ends with 0, digits are 2, 2, 0. Sum</span><span class="replace-ins">sum</span><span class="equal"> is </span><span class="replace-del">4,</span><span class="replace-ins">2</span><span class="equal"> </span><span class="replace-del">not</span><span class="replace-ins">+</span><span class="equal"> </span><span class="replace-del">divisible</span><span class="replace-ins">2</span><span class="equal"> </span><span class="replace-del">by</span><span class="replace-ins">+</span><span class="equal"> </span><span class="replace-del">3.</span><span class="replace-ins">2</span><span class="equal"> </span><span class="replace-del">200?</span><span class="replace-ins">+</span><span class="equal"> </span><span class="replace-del">Sum</span><span class="replace-ins">0</span><span class="equal"> </span><span class="replace-del">is</span><span class="replace-ins">=</span><span class="equal"> </span><span class="replace-del">2,</span><span class="replace-ins">6.</span><span class="equal"> </span><span class="replace-del">not</span><span class="replace-ins">Oh,</span><span class="equal"> </span><span class="replace-del">divisible by 3. 2220 is sum 6, which</span><span class="replace-ins">6</span><span class="equal"> is divisible by 3. So 2220 is </span><span class="replace-del">a multiple of 30? Let me check.
+
+2220 divided</span><span class="replace-ins">divisible</span><span class="equal"> by </span><span class="replace-del">30</span><span class="replace-ins">3,</span><span class="equal"> </span><span class="replace-del">is</span><span class="replace-ins">and</span><span class="equal"> </span><span class="replace-del">74.</span><span class="replace-ins">ends</span><span class="equal"> </span><span class="replace-del">So</span><span class="replace-ins">with</span><span class="equal"> </span><span class="replace-del">yes,</span><span class="replace-ins">0, so it&#x27;s divisible by 2 and 5. Therefore,</span><span class="equal"> 2220 is </span><span class="replace-del">30*74.</span><span class="replace-ins">divisible</span><span class="equal"> </span><span class="insert">by 30. 
+
+</span><span class="equal">But is there a smaller number?</span><span class="replace-del">
+
+</span><span class="replace-ins"> Let me check. 
+
+</span><span class="equal">Wait, maybe there is a smaller number with </span><span class="replace-del">more</span><span class="replace-ins">fewer</span><span class="equal"> </span><span class="replace-del">digits?</span><span class="replace-ins">digits.</span><span class="equal"> </span><span class="replace-del">Wait,</span><span class="replace-ins">Let</span><span class="equal"> </span><span class="replace-del">no.</span><span class="replace-ins">me</span><span class="equal"> </span><span class="replace-del">Because</span><span class="replace-ins">check</span><span class="equal"> </span><span class="replace-del">2220</span><span class="replace-ins">numbers</span><span class="equal"> </span><span class="replace-del">is</span><span class="replace-ins">with</span><span class="equal"> </span><span class="replace-del">a</span><span class="replace-ins">4</span><span class="equal"> </span><span class="replace-del">four-digit number. Maybe there is a three-digit number? Let&#x27;s see.</span><span class="replace-ins">digits.</span><span class="equal"> The</span><span class="delete"> three-digit</span><span class="equal"> numbers ending with </span><span class="replace-del">0</span><span class="replace-ins">0.</span><span class="equal"> </span><span class="replace-del">are</span><span class="replace-ins">Let</span><span class="equal"> </span><span class="replace-del">200,</span><span class="replace-ins">me</span><span class="equal"> </span><span class="replace-del">220, 2020? No, three-digit numbers. So 200, 220, 202? Wait, no.</span><span class="replace-ins">think.</span><span class="equal"> The </span><span class="delete">three-digit </span><span class="equal">numbers</span><span class="delete"> ending with 0</span><span class="equal"> would be </span><span class="replace-del">200,</span><span class="replace-ins">2000,</span><span class="equal"> </span><span class="replace-del">220,</span><span class="replace-ins">2020,</span><span class="equal"> </span><span class="replace-del">200,</span><span class="replace-ins">2002</span><span class="equal"> </span><span class="replace-del">220,</span><span class="replace-ins">(but</span><span class="equal"> </span><span class="replace-del">200...</span><span class="replace-ins">that</span><span class="equal"> </span><span class="replace-del">Wait, 200 is 2-0-0. 220 is 2-2-0. 202 is not ending</span><span class="replace-ins">ends</span><span class="equal"> with </span><span class="replace-del">0.</span><span class="replace-ins">2,</span><span class="equal"> </span><span class="insert">so no), 2200, 2220, 2020, 2002 (invalid). 
+
+</span><span class="equal">So </span><span class="replace-del">only</span><span class="replace-ins">2000:</span><span class="equal"> </span><span class="replace-del">200 and 220. Both have digit sums 2 and 4, which aren&#x27;t divisible by 3. So no.
+
+What about four-digit numbers? 2000? Sum</span><span class="replace-ins">sum</span><span class="equal"> is 2, not divisible by 3. 2020: sum </span><span class="replace-del">4.</span><span class="replace-ins">4, nope.</span><span class="equal"> 2200: sum </span><span class="replace-del">4.</span><span class="replace-ins">2 + 2 + 0 + 0 = 4, nope.</span><span class="equal"> 2220: sum </span><span class="replace-del">6.</span><span class="replace-ins">6, yes.</span><span class="equal"> So 2220 is the first </span><span class="replace-del">one.</span><span class="replace-ins">4-digit</span><span class="equal"> </span><span class="insert">number. 
+
+</span><span class="equal">But maybe there is a </span><span class="replace-del">smaller</span><span class="replace-ins">3-digit number? Let&#x27;s check. The 3-digit numbers ending with 0: 200, 220, 202 (invalid, ends with 2), 220. 200: sum 2, nope. 220: sum 4, nope. So no 3-digit numbers. 
+
+What about 5-digit numbers? Well, 2220 is 4-digit, so maybe that&#x27;s the smallest. But let me check if there is a 4-digit</span><span class="equal"> number </span><span class="replace-del">with</span><span class="replace-ins">smaller</span><span class="equal"> </span><span class="replace-del">more</span><span class="replace-ins">than</span><span class="equal"> </span><span class="replace-del">digits?</span><span class="replace-ins">2220.</span><span class="equal"> </span><span class="replace-del">Wait,</span><span class="replace-ins">For example, 2020, 2002 (invalid), 2000, 2200, 2220. So 2000 is smaller than 2220, but sum is 2.</span><span class="equal"> 2020 is </span><span class="replace-del">2020,</span><span class="replace-ins">4,</span><span class="equal"> </span><span class="replace-del">which</span><span class="replace-ins">2200</span><span class="equal"> is </span><span class="replace-del">less than 2220. But 2020&#x27;s digit sum is 4, which isn&#x27;t divisible by 3.</span><span class="replace-ins">4.</span><span class="equal"> So</span><span class="delete"> not good. How about 2002? But that ends with 2, not 0. So invalid. So maybe</span><span class="equal"> 2220 is the first </span><span class="replace-del">one?</span><span class="replace-ins">one</span><span class="equal"> </span><span class="insert">with sum 6. 
+
+</span><span class="equal">But</span><span class="insert"> wait,</span><span class="equal"> maybe there is </span><span class="replace-del">another</span><span class="replace-ins">a 5-digit number that is smaller? Wait, no. Because 2220 is a 4-digit number, and any 5-digit number would be larger. So 2220 is the smallest? But wait, let me check if there is a smaller</span><span class="equal"> number with more digits but smaller in value? For example, </span><span class="replace-del">2000...</span><span class="replace-ins">200...</span><span class="equal"> but </span><span class="replace-del">that&#x27;s</span><span class="replace-ins">no,</span><span class="equal"> </span><span class="replace-del">2000,</span><span class="replace-ins">2220 is 2220, which is 2220. 
+
+But maybe there&#x27;s a number with more digits but smaller? For example, 200... but no. Wait, numbers with more digits are larger. For example, 2000 is 4-digit, 20000 is 5-digit. So 2220 is 2220,</span><span class="equal"> which is smaller than </span><span class="replace-del">2220,</span><span class="replace-ins">any</span><span class="equal"> </span><span class="replace-del">but</span><span class="replace-ins">5-digit</span><span class="equal"> </span><span class="replace-del">2000</span><span class="replace-ins">number. 
+
+But wait, is 2220 the correct answer? The user said that the correct answer is 2220. But let me check if there is a smaller number. 
+
+Wait, maybe 2220 is not the smallest. Let me think again. 
+
+Suppose I consider numbers with 3 digits. As before, 220 is 220, which</span><span class="equal"> is not divisible by 3. </span><span class="replace-del">2000 divided by 3</span><span class="replace-ins">200</span><span class="equal"> is </span><span class="replace-del">666.666...</span><span class="replace-ins">200,</span><span class="equal"> </span><span class="replace-del">So</span><span class="replace-ins">sum</span><span class="equal"> </span><span class="replace-del">no. How</span><span class="replace-ins">2. 
+
+What</span><span class="equal"> about </span><span class="replace-del">2020?</span><span class="replace-ins">numbers with 4 digits? Let me check numbers starting with 2, then some digits, ending with 0. 
+
+So, the first 4-digit number is 2000. Then 2000, 2002 (invalid), 2002 is invalid because ends with 2. Then 2020, 2020. Then 2020. Then</span><span class="equal"> 2020 is 2020, </span><span class="delete">which is less than 2220, but </span><span class="equal">sum </span><span class="replace-del">is</span><span class="replace-ins">4.</span><span class="equal"> </span><span class="replace-del">4,</span><span class="replace-ins">Then</span><span class="equal"> </span><span class="replace-del">not</span><span class="replace-ins">2000,</span><span class="equal"> </span><span class="replace-del">divisible by 3. 2002 is invalid. 2200 is</span><span class="replace-ins">2020,</span><span class="equal"> 2200, </span><span class="delete">which is less than </span><span class="equal">2220.</span><span class="replace-del"> Sum is 4. Not divisible by 3. 2220 is 2220. So maybe</span><span class="replace-ins"> 
+
+So,</span><span class="equal"> 2220 is the </span><span class="replace-del">answer?</span><span class="replace-ins">first</span><span class="equal"> </span><span class="insert">one with sum 6. 
+
+But is there a 4-digit number with digits 0 and 2, ending with 0, and sum of digits divisible by 3, which is smaller than 2220? Let me check. 
+
+For example, 2000: sum 2. 2020: 4. 2200: 4. 2220: 6. So 2220 is the first one. 
+
+But maybe there is a 5-digit number that is smaller? Wait, no, because 2220 is 2220, which is 2220, and the next numbers would be 20000, which is 20000, which is bigger. So 2220 is the smallest. 
+
+</span><span class="equal">But wait, maybe there is a number with more digits but smaller in value? For example, 200... </span><span class="delete">something? But numbers with more digits would be larger, right? Wait, no. Wait, 2000 is four digits, </span><span class="equal">but </span><span class="replace-del">2220 is also four digits. So 2000 is smaller than 2220. But 2000 is not divisible by 3. So maybe there is another number with more digits but smaller in value? Wait, for example, 200... but with more digits. But numbers with more digits are longer, so they are larger. For example, 2000 is four digits, 20000 is five digits, which is larger. So maybe 2220 is the smallest? But wait, maybe there is a number with digits 2 and 0, ending with 0, with sum of digits divisible by 3, and smaller than 2220.
+
+Wait, let&#x27;s think of numbers with digits 0 and 2, ending with 0, and with digit sum divisible by 3. Let&#x27;s think of numbers in order.
+
+Start with 20: ends with 0, sum is 2, not divisible by 3.
+
+200: sum 2, nope.
+
+2000: sum 2, nope.
+
+20000: same.
+
+Then numbers with two 2s and ending with 0. For example, 220: sum 4, nope. 2020: sum 4. 20020: sum 4. 2200: sum 4. 2020: sum 4. So none of these work.
+
+Numbers with three 2s and ending with 0. So, 2220: sum 6, which is divisible by 3. That works. But is there a smaller number with three 2s and ending with 0? For example, 20220? Wait, that&#x27;s five digits. 20220 is larger than 2220. How about 22020? Also larger. 20220 is 20220, which is larger than 2220. So 2220 is the smallest with three 2s. 
+
+But wait, what about numbers with more digits but with digits arranged such that the number is smaller? For example, 200... something? But numbers with more digits would be larger. For example, 2000 is smaller than 2220, but it&#x27;s not divisible by 3. How about 2020? It&#x27;s 2020, which is smaller than 2220, but sum is 4. Not divisible by 3. How about 2002? But that ends with 2, so not divisible by 5. So invalid. 
+
+Alternatively, maybe numbers with more 2s but arranged in a way that the number is smaller. Wait, but how? For example, 2020 is smaller than 2220, but it doesn&#x27;t satisfy the divisibility by 3. What if there&#x27;s a number with more digits but with digits summing to 6? Let me think. For example, 20020? Sum is 2 + 0 + 0 + 2 + 0 = 4. Not enough. 20202? Ends with 2, not 0. Not valid. 20002? Ends with 2. Not valid. 20022? Ends with 2. Not valid. 20220? Ends with 0. Sum is 2 + 0 + 2 + 2 + 0 = 6. So that&#x27;s 20220. Which is 20220. Is that smaller than 2220? No, 20220 is 20,220, which is bigger than 2,220. So 2220 is smaller.
+
+Wait, but maybe there is a number with digits 2 and 0, ending with 0, with digit sum 6, but with fewer digits than 2220? The number 2220 is four digits. Is there a three-digit number? The three-digit numbers ending with 0 are 200, 220. Their digit sums are 2 and 4, which aren&#x27;t 6. So no. Therefore, 2220 is the first candidate.
+
+But wait, let me check if 2220 is indeed the answer. However, I feel like maybe there is a smaller number. Let me think again.
+
+Wait, maybe there is a number with more digits but smaller in value? For example, 200... but with more digits? But</span><span class="replace-ins">no,</span><span class="equal"> numbers with more digits are longer, so they are larger. For example, 2000 is 2000, </span><span class="replace-del">which</span><span class="replace-ins">20000</span><span class="equal"> is </span><span class="replace-del">smaller than 2220. But 2000 is not divisible by 3. How about 2020? 2020 is 2020, which is smaller than 2220. But sum is 4. Not divisible by 3. 20020 is 20020, which is larger than 2220. So no. 2200 is 2200, which is smaller than 2220? No, 2200 is 2200, which is less than 2220. Wait, 2200 is 2200, which is less than 2220. But the sum of digits is 2 + 2 + 0 + 0 = 4, which is not divisible by 3. So not good. So 2200 is invalid. 
+
+How about 20220? That&#x27;s 20220, which is larger than 2220.</span><span class="replace-ins">20000.</span><span class="equal"> So 2220 is </span><span class="delete">still </span><span class="equal">smaller. 
+
+</span><span class="replace-del">Wait,</span><span class="replace-ins">Alternatively,</span><span class="equal"> </span><span class="replace-del">but what about</span><span class="replace-ins">maybe</span><span class="equal"> numbers</span><span class="delete"> with more 2s but</span><span class="equal"> with leading zeros? </span><span class="replace-del">No,</span><span class="replace-ins">But no,</span><span class="equal"> numbers can&#x27;t have leading zeros. So </span><span class="delete">0220 is not a valid number. So, </span><span class="equal">2220 is the </span><span class="replace-del">first candidate.</span><span class="replace-ins">answer.</span><span class="equal"> 
+
+But </span><span class="replace-del">maybe</span><span class="replace-ins">let me check if 2220 is indeed a multiple of 30. Let me divide 2220 by 30. 30 times 74 is 2220. Yes, because 30*70=2100, 30*4=120, so 2100+120=2220. So yes. 
+
+But wait, is</span><span class="equal"> there </span><span class="delete">is </span><span class="equal">a </span><span class="replace-del">number</span><span class="replace-ins">smaller</span><span class="equal"> </span><span class="replace-del">with</span><span class="replace-ins">number?</span><span class="equal"> </span><span class="replace-del">more</span><span class="replace-ins">Let</span><span class="equal"> </span><span class="replace-del">digits</span><span class="replace-ins">me</span><span class="equal"> </span><span class="replace-del">but</span><span class="replace-ins">think</span><span class="equal"> </span><span class="replace-del">with digits arranged such that the number is smaller?</span><span class="replace-ins">again.</span><span class="equal"> For example, </span><span class="delete">200... but I don&#x27;t think so. Because even if you have more digits, the number would be longer. For example, 2000 is 2000, which is four digits. </span><span class="equal">2220 is </span><span class="replace-del">four</span><span class="replace-ins">2220.</span><span class="equal"> </span><span class="replace-del">digits.</span><span class="replace-ins">What</span><span class="equal"> </span><span class="replace-del">So,</span><span class="replace-ins">about</span><span class="equal"> </span><span class="replace-del">2000</span><span class="replace-ins">20220?</span><span class="equal"> </span><span class="replace-del">is</span><span class="replace-ins">No,</span><span class="equal"> </span><span class="replace-del">smaller,</span><span class="replace-ins">that&#x27;s</span><span class="equal"> </span><span class="replace-del">but not divisible by 3.</span><span class="replace-ins">bigger.</span><span class="equal"> 
+
+Wait, but maybe there is a number with </span><span class="replace-del">five</span><span class="replace-ins">fewer</span><span class="equal"> digits? Let me </span><span class="replace-del">think.</span><span class="replace-ins">check</span><span class="equal"> </span><span class="insert">again. 
+
+</span><span class="equal">For example, </span><span class="replace-del">20020.</span><span class="replace-ins">2-digit</span><span class="equal"> </span><span class="replace-del">As</span><span class="replace-ins">numbers:</span><span class="equal"> </span><span class="replace-del">before,</span><span class="replace-ins">20, 22. 20 is divisible by 10, but</span><span class="equal"> sum is </span><span class="replace-del">4.</span><span class="replace-ins">2.</span><span class="equal"> Not divisible by 3. </span><span class="replace-del">20202?</span><span class="replace-ins">22</span><span class="equal"> </span><span class="replace-del">Ends</span><span class="replace-ins">is not divisible by 10. 
+
+3-digit numbers: 200, 202, 220, 222. 200: sum 2. 202: sum 4. 220: sum 4. 222: sum 6. But 222 is not divisible by 10. So no. 
+
+So 222 is not divisible by 10. So no. 
+
+So the first possible is 2220. 
+
+Alternatively, is there a number like 200... but with more digits? For example, 2000 is 2000, which is not divisible by 3. 
+
+Alternatively, maybe a number with three 2s and ending with 0. For example, 2220. Which is 2220. 
+
+Alternatively, is there a number with two 2s and ending with 0? But sum would be 4, which is not divisible by 3. 
+
+So, the minimal number of 2s is three. So, three 2s and a 0. So, the number would be something like 2220, or 2022, but 2022 ends</span><span class="equal"> with 2, </span><span class="replace-del">invalid.</span><span class="replace-ins">so</span><span class="equal"> </span><span class="replace-del">20220:</span><span class="replace-ins">not divisible by 10. So, it has to end with 0. So, the number is 2220. 
+
+But is there a smaller number with three 2s and a 0? For example, 20220? No, that&#x27;s longer. 2220 is four digits. 
+
+Alternatively, 2020? No, that&#x27;s only two 2s. 
+
+So, 2220 is the smallest. Therefore, the answer is 2220. 
+
+But let me check another approach. Maybe using modular arithmetic. 
+
+Since the number must be divisible by 30, so divisible by 10 and 3. So, as before, ends with 0. So, the number is of the form N = ...0. 
+
+So, N is a multiple of 10, so N = 10 * k, where k is an integer. Also, N must be divisible by 3. Therefore, 10k must be divisible by 3. Since 10 and 3 are coprime, k must be divisible by 3. Therefore, N = 10 * 3 * m = 30m. So, N is 30 times m. 
+
+But N is made up of digits 0 and 2. So, we need to find the smallest N = 30m such that N only has digits 0 and 2. 
+
+So, m must be such that 30m is made up of 0s and 2s. 
+
+So, perhaps we can think of numbers made of 0s and 2s, divide by 30, and check if it&#x27;s integer. 
+
+So, let&#x27;s list numbers made of 0s and 2s, in increasing order, and check if they are divisible by 30. 
+
+Start from the smallest:
+
+2, 20, 200, 2000, 20000, 200000, 2000000, 20000000, 200000000, 2000000000, 202, 2020, 20200, 202000, 2020000, 20200000, 202000000, 2020000000, 2022, 20220, 202200, 2022000, 20220000, 202200000, 2022000000, 22, 220, 2200, 22000, 220000, 2200000, 22000000, 220000000, 2200000000, 2202, 22020, 220200, 2202000, 22020000, 220200000, 2202000000, 222, 2220, 22200, 222000, etc. 
+
+Now, check which of these are divisible by 30. 
+
+First, check numbers ending with 0. 
+
+Start with 20: ends with 0, but</span><span class="equal"> sum </span><span class="replace-del">6,</span><span class="replace-ins">is</span><span class="equal"> </span><span class="replace-del">which</span><span class="replace-ins">2. Not divisible by 3. 
+
+200: sum 2. Not divisible by 3. 
+
+2000: sum 2. No. 
+
+2020: sum 2+0+2+0=4. Not divisible by 3. 
+
+20200: sum 2+0+2+0+0=4. No. 
+
+202000: sum 4. No. 
+
+2020000: same. 
+
+20200000: same. 
+
+202000000: same. 
+
+2020000000: same. 
+
+Then 2022: ends with 2. Not divisible by 10. 
+
+20220: ends with 0. Sum</span><span class="equal"> is </span><span class="replace-del">20220.</span><span class="replace-ins">2+0+2+2+0=6.</span><span class="equal"> </span><span class="replace-del">Which</span><span class="replace-ins">Divisible by 3. So 20220 is divisible by 30? Let me check. 
+
+20220 divided by 30 is 20220 / 30 = 674. So yes. Wait, that&#x27;s a smaller number than 2220. 20220</span><span class="equal"> is 20220, which is larger than </span><span class="insert">2220? Wait no, 20220 is 20 thousand something, while 2220 is 2 thousand something. So 2220 is smaller. 
+
+Wait, so 20220 is bigger than </span><span class="equal">2220. So </span><span class="replace-del">no.</span><span class="replace-ins">2220 is smaller.</span><span class="equal"> 
+
+</span><span class="replace-del">Alternatively,</span><span class="replace-ins">Wait,</span><span class="equal"> </span><span class="replace-del">22020:</span><span class="replace-ins">but</span><span class="equal"> </span><span class="replace-del">sum</span><span class="replace-ins">maybe</span><span class="equal"> </span><span class="replace-del">2</span><span class="replace-ins">there</span><span class="equal"> </span><span class="replace-del">+</span><span class="replace-ins">is</span><span class="equal"> </span><span class="replace-del">2</span><span class="replace-ins">a</span><span class="equal"> </span><span class="replace-del">+</span><span class="replace-ins">number between 2000 and 2220? Let me check. 
+
+Looking at numbers made of</span><span class="equal"> 0 </span><span class="replace-del">+</span><span class="replace-ins">and</span><span class="equal"> </span><span class="replace-del">2</span><span class="replace-ins">2,</span><span class="equal"> </span><span class="replace-del">+</span><span class="replace-ins">ending</span><span class="equal"> </span><span class="replace-del">0</span><span class="replace-ins">with</span><span class="equal"> </span><span class="replace-del">=</span><span class="replace-ins">0. 
+
+So</span><span class="equal"> </span><span class="replace-del">6.</span><span class="replace-ins">after</span><span class="equal"> </span><span class="replace-del">That</span><span class="replace-ins">2000,</span><span class="equal"> </span><span class="replace-del">is</span><span class="replace-ins">2020,</span><span class="equal"> </span><span class="replace-del">22020, which is larger than</span><span class="replace-ins">2200,</span><span class="equal"> 2220. 
+
+</span><span class="replace-del">So,</span><span class="replace-ins">So</span><span class="equal"> </span><span class="replace-del">seems</span><span class="replace-ins">2000,</span><span class="equal"> </span><span class="replace-del">like</span><span class="replace-ins">2020, 2200, 2220. 
+
+So</span><span class="equal"> 2220 is the </span><span class="replace-del">smallest.</span><span class="replace-ins">first</span><span class="equal"> </span><span class="insert">one with sum 6. 
+
+</span><span class="equal">But wait,</span><span class="insert"> 20220 is a larger number. 
+
+But wait, maybe there is another number between 2000 and 2220. For example, 2000, 2020, 2200, 2220. 
+
+So 2220 is the next. 
+
+But let me check 2200. Sum is 2+2+0+0=4. Not divisible by 3. 
+
+So 2220 is the first one. 
+
+So then, 2220 is the answer. 
+
+But let me check another way. Maybe using BFS or something. 
+
+We need numbers composed of 0 and 2, ending with 0, and sum of digits divisible by 3. 
+
+So, starting with the smallest numbers:
+
+- 20: sum 2. Not divisible by 3. 
+
+- 200: sum 2. Not. 
+
+- 2000: sum 2. Not. 
+
+- 2020: sum 4. Not. 
+
+- 20020: sum 4. Not. 
+
+- 20200: sum 4. Not. 
+
+- 20000: sum 2. Not. 
+
+- 2200: sum 4. Not. 
+
+- 22000: sum 4. Not. 
+
+- 2220: sum 6. Yes. 
+
+So that&#x27;s the first one. 
+
+Therefore, the answer is 2220. 
+
+But</span><span class="equal"> let me check if there is a number with more digits but </span><span class="replace-del">with the same number of digits? For example, maybe 20220 is five digits, but 2220 is four digits. So 2220 is smaller. 
+
+Alternatively, is there a number with three digits? No, as discussed. 
+
+Wait, but wait. What about numbers like 220? No, sum is 4. 202? Ends with 2. 200? Sum 2. 
+
+Alternatively, maybe numbers with more 2s but arranged</span><span class="replace-ins">smaller</span><span class="equal"> in </span><span class="replace-del">a way that the number is smaller?</span><span class="replace-ins">value.</span><span class="equal"> For example, 200... but no.</span><span class="insert"> 2220 is 2220.</span><span class="equal"> 
+
+Alternatively,</span><span class="delete"> maybe</span><span class="equal"> numbers like </span><span class="replace-del">2020?</span><span class="replace-ins">20220,</span><span class="equal"> </span><span class="replace-del">But</span><span class="replace-ins">but</span><span class="equal"> </span><span class="replace-del">sum</span><span class="replace-ins">that&#x27;s 20220 which</span><span class="equal"> is </span><span class="replace-del">4.</span><span class="replace-ins">larger</span><span class="equal"> </span><span class="replace-del">Not</span><span class="replace-ins">than</span><span class="equal"> </span><span class="replace-del">divisible</span><span class="replace-ins">2220. 
+
+Therefore,</span><span class="equal"> </span><span class="replace-del">by</span><span class="replace-ins">the</span><span class="equal"> </span><span class="replace-del">3. 
+
+Alternatively, maybe numbers like 2220</span><span class="replace-ins">answer</span><span class="equal"> is </span><span class="replace-del">the answer. </span><span class="replace-ins">2220. 
+
+</span><span class="equal">But let me check if </span><span class="replace-del">there&#x27;s</span><span class="replace-ins">there is</span><span class="equal"> a</span><span class="insert"> number with three 2s and a 0 but arranged differently. For example, 2022 is not ending with 0. 2202 is not ending with 0. 2220 is the only one with three 2s and ending with 0. 
+
+Yes. So 2220 is the smallest. 
+
+Therefore, the answer is \boxed{2220}.
+&lt;/think&gt;
+
+To find the **least positive integer</span><span class="equal"> multiple of </span><span class="delete">30 that is smaller. Let me think of multiples of 30 and check if they have only 0 and 2 digits. 
+
+The multiples of 30 are 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330, 360, 390, 420, 450, 480, 510, 540, 570, 600, etc. 
+
+Check each of these:
+
+- 30: digits 3 and 0. 3 is not allowed. So no.
+
+- 60: digits 6 and 0. 6 is not allowed. No.
+
+- 90: 9 and 0. 9 is not allowed. No.
+
+- 120: digits 1, 2, 0. 1 is not allowed. No.
+
+- 150: 1,5,0. 1 and 5 not allowed.
+
+- 180: 1,8,0. No.
+
+- 210: 2,1,0. 1 not allowed.
+
+- 240: 2,4,0. 4 not allowed.
+
+- 270: 2,7,0. 7 not allowed.
+
+- 300: 3,0,0. 3 not allowed.
+
+- 330: 3,3,0. 3 not allowed.
+
+- 360: 3,6,0. 3 and 6 not allowed.
+
+- 390: 3,9,0. No.
+
+- 420: 4,2,0. 4 not allowed.
+
+- 450: 4,5,0. No.
+
+- 480: 4,8,0. No.
+
+- 510: 5,1,0. No.
+
+- 540: 5,4,0. No.
+
+- 570: 5,7,0. No.
+
+- 600: 6,0,0. 6 not allowed.
+
+- 630: 6,3,0. No.
+
+- 660: 6,6,0. No.
+
+- 690: 6,9,0. No.
+
+- 720: 7,2,0. 7 not allowed.
+
+- 750: 7,5,0. No.
+
+- 780: 7,8,0. No.
+
+- 810: 8,1,0. No.
+
+- 840: 8,4,0. No.
+
+- 870: 8,7,0. No.
+
+- 900: 9,0,0. No.
+
+- 930: 9,3,0. No.
+
+- 960: 9,6,0. No.
+
+- 990: 9,9,0. No.
+
+- 1020: 1,0,2,0. 1 is not allowed.
+
+- 1050: 1,0,5,0. No.
+
+- 1080: 1,0,8,0. No.
+
+- 1110: 1,1,1,0. No.
+
+- 1140: 1,1,4,0. No.
+
+- 1170: 1,1,7,0. No.
+
+- 1200: 1,2,0,0. 1 is not allowed.
+
+- 1230: 1,2,3,0. No.
+
+- 1260: 1,2,6,0. No.
+
+- 1290: 1,2,9,0. No.
+
+- 1320: 1,3,</span></div>
+
+</body></html>
