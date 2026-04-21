@@ -28,8 +28,25 @@ EDITOR_TEMPLATE = (
     "The following is an attempted solution to the question:\n"
     "{r1}\n\n"
     "{feedback}\n\n"
-    "Revise the solution to fix the mistake. Keep correct reasoning intact and only change what is wrong. Output the full revised solution:"
+    "The solution might not be correct. Revise the solution to fix the mistake, if any. Keep correct reasoning intact and only change what is wrong. Output the full revised solution:"
 )
+
+def build_regen_feedback(mode: str, r1: str, wrong: str, gold: str) -> str:
+    wrong_str = wrong if wrong else "[no boxed answer]"
+    if mode == "minimal":
+        return f"Your final answer was {wrong_str}, but the correct answer is {gold}."
+    if mode == "with-r1":
+        return (
+            f"Your previous solution was:\n{r1}\n\n"
+            f"Your final answer was {wrong_str}, but the correct answer is {gold}."
+        )
+    raise ValueError(f"unknown feedback mode: {mode}")
+
+
+def build_edit_feedback(wrong: str, gold: str) -> str:
+    # Editor prompt already shows R1, so feedback stays minimal.
+    wrong_str = wrong if wrong else "[no boxed answer]"
+    return f"The given final answer is {wrong_str}. The correct answer is {gold}."
 
 # ---------------------------------------------------------------------------
 # Answer extraction and equivalence checking
@@ -144,7 +161,7 @@ def register_dataset_eval(name):
 
 def register_dataset_train(name):
     def wrapper(fn):
-        DATASET_REGISTRY_EVAL[name] = fn
+        DATASET_REGISTRY_TRAIN[name] = fn
         return fn
     return wrapper
 

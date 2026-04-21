@@ -20,6 +20,8 @@ from utils import (
     EDITOR_TEMPLATE,
     SYSTEM_PROMPT,
     TEACHER_TEMPLATE,
+    build_edit_feedback,
+    build_regen_feedback,
     DATASET_REGISTRY_EVAL,
     extract_boxed_answer,
     is_equiv,
@@ -31,24 +33,6 @@ def chat_messages(user_content: str) -> list[dict]:
         {"role": "system", "content": SYSTEM_PROMPT},
         {"role": "user", "content": user_content},
     ]
-
-
-def build_regen_feedback(mode: str, r1: str, wrong: str, gold: str) -> str:
-    wrong_str = wrong if wrong else "[no boxed answer]"
-    if mode == "minimal":
-        return f"Your final answer was {wrong_str}, but the correct answer is {gold}."
-    if mode == "with-r1":
-        return (
-            f"Your previous solution was:\n{r1}\n\n"
-            f"Your final answer was {wrong_str}, but the correct answer is {gold}."
-        )
-    raise ValueError(f"unknown feedback mode: {mode}")
-
-
-def build_edit_feedback(wrong: str, gold: str) -> str:
-    # Editor prompt already shows R1 structurally, so feedback stays minimal.
-    wrong_str = wrong if wrong else "[no boxed answer]"
-    return f"The given final answer is {wrong_str}, but the correct answer is {gold}."
 
 
 def stage1_r1(llm: LLM, sampling: SamplingParams, problems: list[dict]) -> list[dict]:
