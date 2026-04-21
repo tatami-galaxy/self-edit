@@ -19,16 +19,32 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import random
 import sys
 from pathlib import Path
 
+# IPC handles from reduce_tensor() carry a Callable; vLLM V1's engine-core IPC
+# uses msgpack which rejects functions, so enable pickle fallback.
+os.environ.setdefault("VLLM_ALLOW_INSECURE_SERIALIZATION", "1")
+
+# Make the repo root importable regardless of whether the script is run as
+# `python expts/online_orpo.py` or `python -m expts.online_orpo`.
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 import torch
 import torch.nn.functional as F
+from peft import LoraConfig, TaskType, get_peft_model
+from torch.multiprocessing.reductions import reduce_tensor
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from vllm import LLM, SamplingParams
+from vllm.config import WeightTransferConfig
+from vllm.distributed.weight_transfer.base import (
+    WeightTransferInitRequest,
+    WeightTransferUpdateRequest,
+)
+from vllm.distributed.weight_transfer.ipc_engine import IPCWeightTransferUpdateInfo
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from utils import (
     DATASET_REGISTRY_TRAIN,
     EDITOR_TEMPLATE,
@@ -49,7 +65,6 @@ def base_messages(problem: str) -> list[dict]:
 def editor_messages(problem: str, r1: str, r1_answer: str, gold: str) -> list[dict]:
     fb = build_edit_feedback(r1_answer, gold)
     return [
-        {"role": "system", "content": SYSTEM_PROMPT},
         {"role": "user", "content": EDITOR_TEMPLATE.format(question=problem, r1=r1, feedback=fb)},
     ]
 
@@ -60,9 +75,11 @@ def editor_messages(problem: str, r1: str, r1_answer: str, gold: str) -> list[di
 
 
 def rollout_pairs(llm: LLM, sampling: SamplingParams, batch: list[dict]) -> tuple[list[dict], dict]:
-    """Sample y1 for the whole batch, y2 via editor for y1-failures, grade both.
+    """Sample y1 then y2 (editor) for every problem; always pair (chosen=y2, rejected=y1).
 
-    Returns (pairs, stats). A pair is kept only when y1 is wrong and y2 is right.
+    No correctness-based filtering: when y1 is already right the editor template
+    asks for a revision "if any", so y2 ~ y1 and the ORPO gradient is near-zero.
+    Grading is kept only for diagnostics.
     """
     y1_prompts = [base_messages(ex["problem"]) for ex in batch]
     y1_outs = llm.chat(y1_prompts, sampling, use_tqdm=False)
@@ -70,39 +87,26 @@ def rollout_pairs(llm: LLM, sampling: SamplingParams, batch: list[dict]) -> tupl
     y1_ans = [extract_boxed_answer(t) or "" for t in y1_texts]
     y1_correct = [bool(a) and is_equiv(a, ex["answer"]) for a, ex in zip(y1_ans, batch)]
 
-    failure_idx = [i for i, c in enumerate(y1_correct) if not c]
-    stats = {
-        "n_batch": len(batch),
-        "n_y1_correct": sum(y1_correct),
-        "n_y1_wrong": len(failure_idx),
-        "n_y2_correct": 0,
-        "n_pairs": 0,
-    }
-    if not failure_idx:
-        return [], stats
-
     edit_prompts = [
-        editor_messages(batch[i]["problem"], y1_texts[i], y1_ans[i], batch[i]["answer"])
-        for i in failure_idx
+        editor_messages(ex["problem"], y1_texts[i], y1_ans[i], ex["answer"])
+        for i, ex in enumerate(batch)
     ]
+
     y2_outs = llm.chat(edit_prompts, sampling, use_tqdm=False)
     y2_texts = [o.outputs[0].text for o in y2_outs]
     y2_ans = [extract_boxed_answer(t) or "" for t in y2_texts]
-    y2_correct = [
-        bool(a) and is_equiv(a, batch[failure_idx[k]]["answer"]) for k, a in enumerate(y2_ans)
-    ]
-    stats["n_y2_correct"] = sum(y2_correct)
+    y2_correct = [bool(a) and is_equiv(a, ex["answer"]) for a, ex in zip(y2_ans, batch)]
 
-    pairs = []
-    for k, i in enumerate(failure_idx):
-        if not y2_correct[k]:
-            continue
-        pairs.append({
-            "problem": batch[i]["problem"],
-            "chosen": y2_texts[k],
-            "rejected": y1_texts[i],
-        })
-    stats["n_pairs"] = len(pairs)
+    pairs = [
+        {"problem": ex["problem"], "chosen": y2_texts[i], "rejected": y1_texts[i]}
+        for i, ex in enumerate(batch)
+    ]
+    stats = {
+        "n_batch": len(batch),
+        "n_y1_correct": sum(y1_correct),
+        "n_y2_correct": sum(y2_correct),
+        "n_pairs": len(pairs),
+    }
     return pairs, stats
 
 
@@ -215,12 +219,51 @@ def orpo_loss(model, batch, beta: float):
 # --------------------------------------------------------------------------
 
 
-def sync_weights_to_vllm(model, llm: LLM):
-    """Copy HF model weights into the vLLM worker's model. vLLM internal API
-    path varies across versions; adjust if this breaks on upgrade.
+def _peft_to_hf_name(k: str) -> str | None:
+    """Translate a PEFT state-dict key to the underlying HF name, or None to skip.
+
+    PEFT wraps the model so keys look like 'base_model.model.<hf-name>' and
+    LoRA-adapted linears get a '.base_layer.' infix. LoRA tensors are skipped —
+    after merge_adapter() their contribution lives in base_layer.weight.
     """
-    named = ((name, p.detach()) for name, p in model.named_parameters())
-    llm.llm_engine.model_executor.driver_worker.model_runner.model.load_weights(named)
+    if ".lora_" in k:
+        return None
+    if k.startswith("base_model.model."):
+        k = k[len("base_model.model."):]
+    return k.replace(".base_layer.", ".")
+
+
+def sync_weights_to_vllm(model, llm: LLM, gpu_uuid: str):
+    """Push current (base + LoRA-merged) weights into vLLM via IPC.
+
+    For each LoRA-wrapped linear we briefly merge the adapter into base_layer.weight,
+    export the merged tensor, then unmerge to keep training state intact. Base
+    params (embeddings, layernorms, unLoRA'd modules) are passed through as-is.
+    """
+    from dataclasses import asdict
+
+    model.merge_adapter()
+    try:
+        names, dtype_names, shapes, ipc_handles = [], [], [], []
+        for k, p in model.named_parameters():
+            hf_name = _peft_to_hf_name(k)
+            if hf_name is None:
+                continue
+            t = p.detach().contiguous()
+            names.append(hf_name)
+            dtype_names.append(str(t.dtype).split(".")[-1])
+            shapes.append(list(t.shape))
+            ipc_handles.append({gpu_uuid: reduce_tensor(t)})
+
+        update_info = asdict(IPCWeightTransferUpdateInfo(
+            names=names,
+            dtype_names=dtype_names,
+            shapes=shapes,
+            ipc_handles=ipc_handles,
+        ))
+        llm.update_weights(WeightTransferUpdateRequest(update_info=update_info))
+    finally:
+        model.unmerge_adapter()
 
 
 # --------------------------------------------------------------------------
@@ -238,12 +281,17 @@ def main():
                     help="Problems sampled per rollout. Actual training batch is <= this (only y1-wrong + y2-right survive).")
     ap.add_argument("--gen-temperature", type=float, default=0.9)
     ap.add_argument("--gen-top-p", type=float, default=0.95)
-    ap.add_argument("--max-gen-tokens", type=int, default=1024)
-    ap.add_argument("--max-seq-len", type=int, default=2048)
+    ap.add_argument("--max-gen-tokens", type=int, default=2048)
+    ap.add_argument("--max-seq-len", type=int, default=4096)
     ap.add_argument("--lr", type=float, default=5e-7)
     ap.add_argument("--beta", type=float, default=0.1)
     ap.add_argument("--grad-clip", type=float, default=1.0)
     ap.add_argument("--sync-every", type=int, default=4)
+    ap.add_argument("--lora-r", type=int, default=16)
+    ap.add_argument("--lora-alpha", type=int, default=32)
+    ap.add_argument("--lora-dropout", type=float, default=0.05)
+    ap.add_argument("--lora-target-modules", nargs="+", default=None,
+                    help="Target module names for LoRA. Default: all linear modules.")
     ap.add_argument("--vllm-mem", type=float, default=0.4,
                     help="Fraction of GPU mem vLLM reserves. Lower this to leave room for training.")
     ap.add_argument("--seed", type=int, default=42)
@@ -264,9 +312,22 @@ def main():
 
     print("Loading HF model for training ...")
     model = AutoModelForCausalLM.from_pretrained(
-        args.model, torch_dtype=torch.bfloat16,
+        args.model, dtype=torch.bfloat16,
     ).to("cuda")
+
+    lora_cfg = LoraConfig(
+        r=args.lora_r,
+        lora_alpha=args.lora_alpha,
+        lora_dropout=args.lora_dropout,
+        target_modules=args.lora_target_modules or "all-linear",
+        task_type=TaskType.CAUSAL_LM,
+    )
+    model = get_peft_model(model, lora_cfg)
+    model.print_trainable_parameters()
     model.gradient_checkpointing_enable()
+    # LoRA + grad checkpointing: inputs need requires_grad so gradients flow
+    # through the frozen base into the adapters.
+    model.enable_input_require_grads()
     model.train()
 
     print("Loading vLLM for sampling ...")
@@ -275,7 +336,11 @@ def main():
         seed=args.seed,
         dtype="bfloat16",
         gpu_memory_utilization=args.vllm_mem,
+        weight_transfer_config=WeightTransferConfig(backend="ipc"),
     )
+    llm.init_weight_transfer_engine(WeightTransferInitRequest(init_info={}))
+    gpu_uuid = str(torch.cuda.get_device_properties(torch.cuda.current_device()).uuid)
+
     sampling = SamplingParams(
         temperature=args.gen_temperature,
         top_p=args.gen_top_p,
@@ -283,7 +348,8 @@ def main():
         seed=args.seed,
     )
 
-    optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr)
+    trainable = [p for p in model.parameters() if p.requires_grad]
+    optimizer = torch.optim.AdamW(trainable, lr=args.lr)
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     log_file = args.output.open("w")
@@ -330,7 +396,7 @@ def main():
 
         step += 1
         if step % args.sync_every == 0:
-            sync_weights_to_vllm(model, llm)
+            sync_weights_to_vllm(model, llm, gpu_uuid)
 
     log_file.close()
     print(f"Done. Wrote log to {args.output}")

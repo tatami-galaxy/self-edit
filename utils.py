@@ -25,10 +25,10 @@ TEACHER_TEMPLATE = (
 
 EDITOR_TEMPLATE = (
     "{question}\n\n"
-    "The following is an attempted solution to the question:\n"
+    "The following is an attempted solution to the above question:\n"
     "{r1}\n\n"
     "{feedback}\n\n"
-    "The solution might not be correct. Revise the solution to fix the mistake, if any. Keep correct reasoning intact and only change what is wrong. Output the full revised solution:"
+    "The solution might not be correct. Revise the solution to fix the mistake, if any. Keep correct reasoning intact and only change what is wrong. Output the full revised solution with the final answer in \\boxed{{}}:"
 )
 
 def build_regen_feedback(mode: str, r1: str, wrong: str, gold: str) -> str:
@@ -45,8 +45,10 @@ def build_regen_feedback(mode: str, r1: str, wrong: str, gold: str) -> str:
 
 def build_edit_feedback(wrong: str, gold: str) -> str:
     # Editor prompt already shows R1, so feedback stays minimal.
-    wrong_str = wrong if wrong else "[no boxed answer]"
-    return f"The given final answer is {wrong_str}. The correct answer is {gold}."
+    if wrong:
+        return f"The final answer from the above solution is {wrong}. The correct answer is {gold}."
+    else:
+       return f"The above solution does not contain a boxed answer. The correct answer is {gold}." 
 
 # ---------------------------------------------------------------------------
 # Answer extraction and equivalence checking
